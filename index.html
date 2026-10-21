@@ -170,14 +170,14 @@ section .wrap{padding-block:46px}
 }
 .moves{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .move{
-  display:grid;grid-template-columns:76px 1fr;gap:0 20px;
+  display:grid;grid-template-columns:104px 1fr;gap:0 20px;
   padding:18px 0;border-top:1px solid rgba(242,201,76,.2);
   align-items:start;
 }
 .move:first-child{border-top:0}
 .move .time{
-  font-family:var(--mono);font-size:15px;font-variant-numeric:tabular-nums;
-  color:var(--brass);padding-top:3px;letter-spacing:.02em;
+  font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums;
+  color:var(--brass);padding-top:4px;letter-spacing:0;white-space:nowrap;
 }
 .move .body{min-width:0}
 .move h3{
@@ -223,9 +223,9 @@ footer .line{
 [data-lang="tj"] [data-l]:not([data-l="tj"]),
 [data-lang="en"] [data-l]:not([data-l="en"]){display:none !important}
 
-@media (max-width:420px){
-  .move{grid-template-columns:62px 1fr;gap:0 14px}
-  .move .time{font-size:13.5px}
+@media (max-width:480px){
+  .move{grid-template-columns:1fr;gap:3px}
+  .move .time{padding-top:0;font-size:13px}
   .hero .wrap{padding-block:40px 38px}
 }
 @media (prefers-reduced-motion:no-preference){
@@ -376,7 +376,11 @@ img{max-width:100%}
         <li><img src="logos/fide.png" alt="FIDE" width="513" height="360"></li>
         <li><img src="logos/chess-federation.png" alt="Федерация шахмат Таджикистана" width="305" height="360"></li>
         <li class="tall"><img src="logos/president-cup.png" alt="Tajikistan President Cup" width="288" height="360"></li>
-        <li class="wide"><img src="logos/koinoti-nav.png" alt="Коиноти Нав — новое пространство жизни" width="838" height="132"></li>
+        <li class="wide">
+          <img data-l="ru" src="logos/koinoti-nav-ru.png" alt="Коиноти Нав — новое пространство жизни" width="838" height="132">
+          <img data-l="tj" src="logos/koinoti-nav-tj.png" alt="Коиноти Нав — фазои нави ҳаёт" width="824" height="132">
+          <img data-l="en" src="logos/koinoti-nav-en.png" alt="Koinoti Nav — new space of life" width="751" height="132">
+        </li>
       </ul>
     </div>
   </section>
@@ -398,55 +402,121 @@ img{max-width:100%}
 
       <ol class="moves">
         <li class="move">
-          <div class="time">12:30</div>
+          <div class="time">12:30–13:00</div>
           <div class="body">
-            <h3><span data-l="ru">Встреча гостей</span><span data-l="tj">Пешвози меҳмонон</span><span data-l="en">Guest reception</span></h3>
-            <p><span data-l="ru">Сбор гостей.</span><span data-l="tj">Ҷамъ омадани меҳмонон.</span><span data-l="en">Arrival and welcoming of guests.</span></p>
+            <h3><span data-l="ru">Встреча гостей</span><span data-l="tj">Пешвози меҳмонон</span><span data-l="en">Guest arrival</span></h3>
+            <p><span data-l="ru">Встреча и размещение гостей. Выступление струнного квартета на сцене.</span><span data-l="tj">Пешвоз ва ҷойгиркунии меҳмонон. Баромади квартети торӣ дар саҳна.</span><span data-l="en">Welcoming and seating of guests. String quartet performance on stage.</span></p>
           </div>
         </li>
 
         <li class="move">
-          <div class="time">13:00</div>
+          <div class="time">13:00–13:05</div>
           <div class="body">
-            <h3><span data-l="ru">Художественное открытие</span><span data-l="tj">Ифтитоҳи бадеӣ</span><span data-l="en">Cultural opening</span></h3>
-            <p><span data-l="ru">Фильм о Независимом Таджикистане.</span><span data-l="tj">Намоиши филм дар бораи Тоҷикистони соҳибистиқлол.</span><span data-l="en">A film about Independent Tajikistan.</span></p>
+            <h3><span data-l="ru">Хореографический номер</span><span data-l="tj">Барномаи хореографӣ</span><span data-l="en">Choreographic performance</span></h3>
+            <p><span data-l="ru">Классический танец.</span><span data-l="tj">Рақси классикӣ.</span><span data-l="en">Classical dance.</span></p>
           </div>
         </li>
 
         <li class="move">
-          <div class="time">13:15</div>
+          <div class="time">13:05–13:10</div>
           <div class="body">
-            <h3><span data-l="ru">Официальная часть</span><span data-l="tj">Қисми расмӣ</span><span data-l="en">Official ceremony</span></h3>
-            <p><span data-l="ru">Торжественное открытие церемонии, выступления почётных гостей.</span><span data-l="tj">Маросими тантанавии ифтитоҳ ва суханронии меҳмонони олиқадр.</span><span data-l="en">Formal opening ceremony and speeches by distinguished guests.</span></p>
+            <h3><span data-l="ru">Короткометражный фильм</span><span data-l="tj">Филми кӯтоҳметраж</span><span data-l="en">Film screening</span></h3>
+            <p><span data-l="ru">Показ видеофильма о становлении и развитии Независимого Таджикистана.</span><span data-l="tj">Намоиши филм дар бораи ташаккул ва рушди Тоҷикистони соҳибистиқлол.</span><span data-l="en">A film on the formation and development of independent Tajikistan.</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">13:10–13:15</div>
+          <div class="body">
+            <h3><span data-l="ru">Торжественное открытие церемонии</span><span data-l="tj">Ифтитоҳи тантанавии маросим</span><span data-l="en">Official opening of the ceremony</span></h3>
+            <p><span data-l="ru">Вступительное слово ведущих.</span><span data-l="tj">Сухани муқаддимавии барандагон.</span><span data-l="en">Opening remarks by the hosts.</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">13:15–13:20</div>
+          <div class="body">
+            <h3><span data-l="ru">Представление почётных гостей</span><span data-l="tj">Муаррифии меҳмонони олиқадр</span><span data-l="en">Introduction of distinguished guests</span></h3>
+            <p><span data-l="ru">Представление почётных гостей, спонсоров и партнёров турнира.</span><span data-l="tj">Муаррифии меҳмонони олиқадр, сарпарастон ва шарикони мусобиқа.</span><span data-l="en">Introduction of distinguished guests, sponsors and partners of the tournament.</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">13:20–13:35</div>
+          <div class="body">
+            <h3><span data-l="ru">Приветственные речи официальных лиц</span><span data-l="tj">Суханронии шахсони расмӣ</span><span data-l="en">Welcome speeches by officials</span></h3>
+            <p><span data-l="ru">Выступления почётных гостей.</span><span data-l="tj">Баромади меҳмонони олиқадр.</span><span data-l="en">Addresses by distinguished guests.</span></p>
           </div>
         </li>
 
         <li class="move key">
-          <div class="time">13:50</div>
+          <div class="time">13:35–13:40</div>
           <div class="body">
-            <h3><span data-l="ru">Страны-участницы и первый ход</span><span data-l="tj">Кишварҳои иштирокчӣ ва гашти аввал</span><span data-l="en">Participating countries and symbolic first move</span></h3>
-            <p><span data-l="ru">Представление стран — участниц турнира и символический первый ход.</span><span data-l="tj">Муаррифии кишварҳои иштирокчии мусобиқа ва анҷом додани гашти рамзии аввал.</span><span data-l="en">Introduction of the participating countries and the symbolic first move.</span></p>
+            <h3><span data-l="ru">Государственный гимн</span><span data-l="tj">Суруди миллӣ</span><span data-l="en">National Anthem</span></h3>
+            <p><span data-l="ru">Исполнение Государственного гимна Республики Таджикистан.</span><span data-l="tj">Иҷрои Суруди миллии Ҷумҳурии Тоҷикистон.</span><span data-l="en">Performance of the National Anthem of the Republic of Tajikistan.</span></p>
           </div>
         </li>
 
         <li class="move">
-          <div class="time">14:10</div>
+          <div class="time">13:40–13:45</div>
           <div class="body">
-            <h3><span data-l="ru">Концертная программа</span><span data-l="tj">Барномаи консертӣ</span><span data-l="en">Concert programme</span></h3>
+            <h3><span data-l="ru">Гимн ФИДЕ</span><span data-l="tj">Суруди ФИДЕ</span><span data-l="en">FIDE Anthem</span></h3>
+            <p><span data-l="ru">Исполнение гимна Международной шахматной федерации (ФИДЕ).</span><span data-l="tj">Иҷрои суруди Федератсияи байналмилалии шоҳмот (ФИДЕ).</span><span data-l="en">Performance of the anthem of the International Chess Federation (FIDE).</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">13:45–14:00</div>
+          <div class="body">
+            <h3><span data-l="ru">Представление стран</span><span data-l="tj">Муаррифии кишварҳо</span><span data-l="en">Presentation of countries</span></h3>
+            <p><span data-l="ru">Представление стран — участниц турнира.</span><span data-l="tj">Муаррифии кишварҳои иштирокчии мусобиқа.</span><span data-l="en">Presentation of the participating countries.</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">14:00–14:05</div>
+          <div class="body">
+            <h3><span data-l="ru">Национальный номер</span><span data-l="tj">Барномаи миллӣ</span><span data-l="en">National performance</span></h3>
+            <p><span data-l="ru">Выступление ансамбля национального танца.</span><span data-l="tj">Баромади ансамбли рақсҳои миллӣ.</span><span data-l="en">Performance by a national dance ensemble.</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">14:05–14:15</div>
+          <div class="body">
+            <h3><span data-l="ru">Концертный номер</span><span data-l="tj">Барномаи консертӣ</span><span data-l="en">Concert performance</span></h3>
+            <p><span data-l="ru">Исполнительница — Хучаста Мирзовали.</span><span data-l="tj">Иҷрокунанда — Хуҷаста Мирзовалӣ.</span><span data-l="en">Performed by Khujasta Mirzovali.</span></p>
           </div>
         </li>
 
         <li class="move key">
-          <div class="time">14:20</div>
+          <div class="time">14:15–14:20</div>
           <div class="body">
-            <h3><span data-l="ru">Объявление турнира открытым</span><span data-l="tj">Эълони расмии ифтитоҳи мусобиқа</span><span data-l="en">Official declaration of the tournament opening</span></h3>
+            <h3><span data-l="ru">Первый ход</span><span data-l="tj">Ҳаракати аввал</span><span data-l="en">Ceremonial first move</span></h3>
+            <p><span data-l="ru">Ведущие приглашают на сцену почётных гостей, которые совершают символический первый ход.</span><span data-l="tj">Барандагон меҳмонони олиқадрро ба саҳна даъват мекунанд, ки ҳаракати рамзии аввалро анҷом медиҳанд.</span><span data-l="en">The hosts invite distinguished guests on stage to make the ceremonial first move.</span></p>
+          </div>
+        </li>
+
+        <li class="move key">
+          <div class="time">14:20–14:30</div>
+          <div class="body">
+            <h3><span data-l="ru">Заключительное слово</span><span data-l="tj">Сухани хотимавӣ</span><span data-l="en">Closing remarks</span></h3>
+            <p><span data-l="ru">Официальное объявление турнира открытым и короткий инструктаж для участников о переходе на игровую площадку.</span><span data-l="tj">Эълони расмии оғози мусобиқа ва дастури мухтасар барои иштирокчиён оид ба гузариш ба толори бозӣ.</span><span data-l="en">Official declaration of the tournament open and a short briefing for participants on moving to the playing hall.</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">14:30–14:45</div>
+          <div class="body">
+            <h3><span data-l="ru">Трансфер участников</span><span data-l="tj">Интиқоли иштирокчиён</span><span data-l="en">Participant transfer</span></h3>
+            <p><span data-l="ru">Трансфер участников в гостиницу «Истиклол».</span><span data-l="tj">Интиқоли иштирокчиён ба меҳмонхонаи «Истиқлол».</span><span data-l="en">Transfer of participants to the Istiqlol Hotel.</span></p>
           </div>
         </li>
 
         <li class="move">
           <div class="time">15:00</div>
           <div class="body">
-            <h3><span data-l="ru">Старт I тура</span><span data-l="tj">Оғози даври I</span><span data-l="en">Start of Round 1</span></h3>
+            <h3><span data-l="ru">Начало I тура</span><span data-l="tj">Оғози даври I</span><span data-l="en">Start of Round 1</span></h3>
             <p><span data-l="ru">Гостиница «Истиклол».</span><span data-l="tj">Меҳмонхонаи «Истиқлол».</span><span data-l="en">Istiqlol Hotel.</span></p>
           </div>
         </li>
