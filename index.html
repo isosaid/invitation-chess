@@ -146,28 +146,37 @@ section .wrap{padding-block:46px}
   text-transform:uppercase;color:var(--ivory-dim);
 }
 
-/* ---------- факты ---------- */
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
-@media (max-width:780px){.facts{grid-template-columns:1fr}}
-.fact{background:var(--panel);padding:22px 20px;min-width:0}
-.fact .k{
-  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--brass);margin:0 0 10px;
-}
-.fact .v{font-family:var(--serif);font-size:23px;line-height:1.3;margin:0}
-.fact .v small{display:block;font-family:var(--sans);font-size:14.5px;color:var(--ivory-dim);margin-top:6px;line-height:1.5}
-.fact .v .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
-
 /* ---------- программа ---------- */
-.sec-head{text-align:center;margin:0 0 34px}
-.sec-head .kicker{
-  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--brass);margin:0 0 12px;
+.prog-head{margin:0 0 26px}
+.prog-head .kicker{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 14px;
 }
-.sec-head h2{
-  font-family:var(--serif);font-weight:500;font-size:clamp(26px,5.6vw,36px);
-  margin:0;letter-spacing:.01em;
+.prog-head h2{
+  font-family:var(--sans);font-weight:700;font-size:clamp(23px,4.4vw,32px);line-height:1.22;
+  margin:0;letter-spacing:-.01em;text-wrap:balance;
 }
+.prog-head h2 br{display:none}
+@media (min-width:720px){.prog-head h2 br{display:inline}}
+.prog-head .sub{margin:12px 0 0;font-size:17px;color:var(--ivory-dim)}
+.prog-facts{
+  display:grid;grid-template-columns:1fr 1.5fr .7fr;gap:0 26px;
+  padding:16px 0;margin:0 0 30px;
+  border-top:1px solid var(--brass-soft);border-bottom:1px solid var(--brass-soft);
+}
+.prog-facts .pf + .pf{border-left:1px solid rgba(242,201,76,.28);padding-left:26px}
+.prog-facts .k{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 8px;
+}
+.prog-facts .v{margin:0;font-size:19px;line-height:1.35;font-weight:500}
+.prog-facts .v .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.prog-facts .v small{display:block;font-size:14px;color:var(--ivory-dim);margin-top:4px;font-weight:400}
+@media (max-width:720px){
+  .prog-facts{grid-template-columns:1fr;gap:16px 0}
+  .prog-facts .pf + .pf{border-left:0;padding-left:0;border-top:1px solid rgba(242,201,76,.22);padding-top:16px}
+}
+
 .agenda{display:flex;flex-direction:column}
 .agenda-head{
   display:grid;grid-template-columns:38px 118px minmax(180px,1.05fr) 1.45fr;gap:0 22px;
@@ -348,35 +357,6 @@ img{max-width:100%}
     </div>
   </section>
 
-  <section>
-    <div class="facts">
-      <div class="fact">
-        <p class="k"><span data-l="ru">Дата</span><span data-l="tj">Сана</span><span data-l="en">Date</span></p>
-        <p class="v">
-          <span data-l="ru"><span class="num">10</span> ноября <span class="num">2026</span><small>вторник</small></span>
-          <span data-l="tj"><span class="num">10</span> ноябри <span class="num">2026</span><small>сешанбе</small></span>
-          <span data-l="en">November <span class="num">10</span>, <span class="num">2026</span><small>Tuesday</small></span>
-        </p>
-      </div>
-      <div class="fact">
-        <p class="k"><span data-l="ru">Время</span><span data-l="tj">Вақт</span><span data-l="en">Time</span></p>
-        <p class="v">
-          <span data-l="ru"><span class="num">13:00</span><small>сбор гостей с 12:30</small></span>
-          <span data-l="tj"><span class="num">13:00</span><small>пешвози меҳмонон аз 12:30</small></span>
-          <span data-l="en"><span class="num">1:00 PM</span><small>guests welcomed from 12:30</small></span>
-        </p>
-      </div>
-      <div class="fact">
-        <p class="k"><span data-l="ru">Место</span><span data-l="tj">Ҷойи баргузорӣ</span><span data-l="en">Venue</span></p>
-        <p class="v">
-          <span data-l="ru">Зал «Istiqlol»<small>Отель «Crowne Plaza», г. Душанбе</small></span>
-          <span data-l="tj">Толори «Istiqlol»<small>Меҳмонхонаи «Crowne Plaza», ш. Душанбе</small></span>
-          <span data-l="en">Istiqlol Hall<small>Crowne Plaza Hotel, Dushanbe</small></span>
-        </p>
-      </div>
-    </div>
-  </section>
-
   <section class="patrons">
     <div class="wrap">
       <p class="k">
@@ -402,17 +382,45 @@ img{max-width:100%}
 
   <section>
     <div class="wrap">
-      <div class="sec-head">
+      <div class="prog-head">
         <p class="kicker">
-          <span data-l="ru">10 ноября · 12:30 — 15:00</span>
-          <span data-l="tj">10 ноябр · 12:30 — 15:00</span>
-          <span data-l="en">10 November · 12:30 — 15:00</span>
+          <span data-l="ru">Программа мероприятия</span>
+          <span data-l="tj">Барномаи чорабинӣ</span>
+          <span data-l="en">Event programme</span>
         </p>
         <h2>
-          <span data-l="ru">Программа церемонии</span>
-          <span data-l="tj">Барномаи маросим</span>
-          <span data-l="en">Ceremony programme</span>
+          <span data-l="ru">Международный шахматный турнир<br>«2-ой Кубок Президента Республики Таджикистан»</span>
+          <span data-l="tj">Мусобиқаи байналмилалӣ оид ба шоҳмот<br>«Дуюмин Ҷоми Президенти Ҷумҳурии Тоҷикистон»</span>
+          <span data-l="en">International Chess Tournament<br>«2nd President’s Cup of the Republic of Tajikistan»</span>
         </h2>
+        <p class="sub">
+          <span data-l="ru">Торжественная церемония открытия</span>
+          <span data-l="tj">Маросими тантанавии ифтитоҳ</span>
+          <span data-l="en">Opening Ceremony</span>
+        </p>
+      </div>
+
+      <div class="prog-facts">
+        <div class="pf">
+          <p class="k"><span data-l="ru">Дата</span><span data-l="tj">Сана</span><span data-l="en">Date</span></p>
+          <p class="v">
+            <span data-l="ru">10 ноября 2026 г.</span>
+            <span data-l="tj">10 ноябри соли 2026</span>
+            <span data-l="en">10 November 2026</span>
+          </p>
+        </div>
+        <div class="pf">
+          <p class="k"><span data-l="ru">Место проведения</span><span data-l="tj">Ҷойи баргузорӣ</span><span data-l="en">Venue</span></p>
+          <p class="v">
+            <span data-l="ru">г. Душанбе, отель Crowne Plaza<small>зал «Istiqlol»</small></span>
+            <span data-l="tj">ш. Душанбе, меҳмонхонаи Crowne Plaza<small>толори «Istiqlol»</small></span>
+            <span data-l="en">Crowne Plaza Hotel, Dushanbe<small>Istiqlol Hall</small></span>
+          </p>
+        </div>
+        <div class="pf">
+          <p class="k"><span data-l="ru">Начало</span><span data-l="tj">Оғоз</span><span data-l="en">Start</span></p>
+          <p class="v"><span class="num">12:30</span></p>
+        </div>
       </div>
 
       <div class="agenda">
