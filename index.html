@@ -133,7 +133,7 @@ h1{
 section{border-bottom:1px solid rgba(242,201,76,.2)}
 section .wrap{padding-block:46px}
 .letter{
-  font-family:var(--serif);font-size:clamp(18px,4vw,21px);line-height:1.62;
+  font-family:var(--serif);font-size:clamp(19px,4.2vw,23px);line-height:1.66;
   color:var(--ivory);max-width:62ch;margin:0 auto;
 }
 .letter .salutation{
@@ -154,8 +154,8 @@ section .wrap{padding-block:46px}
   font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
   color:var(--brass);margin:0 0 10px;
 }
-.fact .v{font-family:var(--serif);font-size:21px;line-height:1.3;margin:0}
-.fact .v small{display:block;font-family:var(--sans);font-size:13px;color:var(--ivory-dim);margin-top:6px;line-height:1.5}
+.fact .v{font-family:var(--serif);font-size:23px;line-height:1.3;margin:0}
+.fact .v small{display:block;font-family:var(--sans);font-size:14.5px;color:var(--ivory-dim);margin-top:6px;line-height:1.5}
 .fact .v .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
 /* ---------- программа ---------- */
@@ -170,32 +170,32 @@ section .wrap{padding-block:46px}
 }
 .agenda{display:flex;flex-direction:column}
 .agenda-head{
-  display:grid;grid-template-columns:34px 104px minmax(160px,1.05fr) 1.45fr;gap:0 18px;
-  padding-bottom:10px;border-bottom:1px solid var(--brass-soft);
+  display:grid;grid-template-columns:38px 118px minmax(180px,1.05fr) 1.45fr;gap:0 22px;
+  padding-bottom:12px;border-bottom:1px solid var(--brass-soft);
 }
 .agenda-head span{
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--brass);
 }
 .moves{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .move{
-  display:grid;grid-template-columns:34px 104px minmax(160px,1.05fr) 1.45fr;gap:0 18px;
-  padding:14px 0;border-top:1px solid rgba(242,201,76,.2);align-items:start;
+  display:grid;grid-template-columns:38px 118px minmax(180px,1.05fr) 1.45fr;gap:0 22px;
+  padding:17px 0;border-top:1px solid rgba(242,201,76,.2);align-items:start;
 }
 .move:first-child{border-top:0}
 .move .num{
-  font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums;
-  color:var(--ivory-dim);padding-top:5px;
+  font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;
+  color:var(--ivory-dim);padding-top:9px;
 }
 .move .time{
-  font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums;
-  color:var(--brass);padding-top:4px;white-space:nowrap;
+  font-family:var(--mono);font-size:15px;font-variant-numeric:tabular-nums;
+  color:var(--brass);padding-top:8px;white-space:nowrap;
 }
 .move .ev{
-  font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.28;
-  margin:0;letter-spacing:.01em;min-width:0;
+  font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.26;
+  margin:0;letter-spacing:.005em;min-width:0;text-wrap:balance;
 }
-.move .desc{margin:0;font-size:14px;color:var(--ivory-dim);line-height:1.5;min-width:0;padding-top:3px}
+.move .desc{margin:0;font-size:16px;color:var(--ivory-dim);line-height:1.55;min-width:0;padding-top:7px}
 .move.key .ev{color:var(--brass)}
 
 /* ---------- подвал ---------- */
@@ -236,11 +236,11 @@ footer .line{
 
 @media (max-width:620px){
   .agenda-head{display:none}
-  .move{grid-template-columns:28px 1fr;gap:3px 12px;padding:15px 0}
-  .move .num{grid-column:1;grid-row:1 / span 3;padding-top:3px}
-  .move .time{grid-column:2;grid-row:1;padding-top:0;font-size:12.5px}
-  .move .ev{grid-column:2;grid-row:2;font-size:18px}
-  .move .desc{grid-column:2;grid-row:3;padding-top:2px}
+  .move{grid-template-columns:30px 1fr;gap:4px 12px;padding:17px 0}
+  .move .num{grid-column:1;grid-row:1 / span 3;padding-top:2px}
+  .move .time{grid-column:2;grid-row:1;padding-top:0;font-size:14px}
+  .move .ev{grid-column:2;grid-row:2;font-size:21px}
+  .move .desc{grid-column:2;grid-row:3;padding-top:3px;font-size:15.5px}
   .hero .wrap{padding-block:40px 38px}
 }
 @media (prefers-reduced-motion:no-preference){
