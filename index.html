@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Приглашение на торжественную церемонию открытия Международного шахматного турнира «2-ой Кубок Президента Республики Таджикистан», 10 ноября 2026 года, Душанбе, отель Crowne Plaza.">
+<meta property="og:title" content="Приглашение · 2-ой Кубок Президента Республики Таджикистан">
+<meta property="og:description" content="Торжественная церемония открытия · 10 ноября 2026 · Душанбе, отель Crowne Plaza">
+<meta property="og:image" content="logos/president-cup.png">
+<meta name="theme-color" content="#5a078d">
+<link rel="icon" href="logos/president-cup.png">
+<title>Ҷоми Президент · Приглашение</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow engraved column — crest, letter, facts, move-by-move programme.
+   Single committed visual world: dark board-green ground, ivory type, brass rules. */
+:root{
+  --ground:#5a078d;        /* фирменный фиолетовый */
+  --ground-2:#4d0579;      /* второе поле доски */
+  --panel:#480571;
+  --ivory:#ffffff;
+  --ivory-dim:#d9c7e8;
+  --brass:#f2c94c;
+  --brass-soft:#d1a63a;
+  --line:rgba(242,201,76,.34);
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono","SF Mono",Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ivory);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:760px;
+  margin:0 auto;
+  padding-left:max(20px,env(safe-area-inset-left,0px));
+  padding-right:max(20px,env(safe-area-inset-right,0px));
+}
+
+/* ---------- шапка ---------- */
+.topbar{
+  position:sticky;
+  top:env(safe-area-inset-top,0px);
+  z-index:20;
+  background:rgba(72,5,113,.93);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(242,201,76,.22);
+}
+body::before{
+  content:"";position:fixed;inset:0 0 auto;
+  height:env(safe-area-inset-top,0px);z-index:21;background:var(--ground);
+}
+.topbar .wrap{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-block:12px;
+}
+.mark{display:flex;align-items:center;gap:10px;min-width:0}
+.mark .txt{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ivory-dim);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.langs{display:flex;gap:4px;flex-shrink:0}
+.langs button{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  padding:6px 10px;border:1px solid transparent;border-radius:2px;
+  background:transparent;color:var(--ivory-dim);cursor:pointer;
+}
+.langs button:hover{color:var(--ivory)}
+.langs button[aria-pressed="true"]{
+  color:var(--ground);background:var(--brass);border-color:var(--brass);font-weight:500;
+}
+.langs button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+
+/* ---------- герой ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    url("logos/ornament.png") no-repeat -170px -200px / 420px auto,
+    url("logos/ornament.png") no-repeat right -90px center / 560px auto,
+    url("logos/ornament.png") no-repeat left -120px bottom -170px / 380px auto;
+  opacity:.26;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(72% 62% at 50% 45%,rgba(58,3,92,.55) 0%,rgba(58,3,92,.22) 58%,rgba(58,3,92,0) 100%);
+}
+.hero .wrap{position:relative;z-index:1;padding-block:54px 48px;text-align:center}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 26px;
+}
+.crest{
+  display:inline-flex;flex-direction:column;align-items:center;gap:10px;
+  margin-bottom:22px;
+}
+.crest .pieces{font-size:30px;color:var(--brass);letter-spacing:.14em;line-height:1}
+.crest .rule{width:84px;height:1px;background:var(--brass-soft)}
+h1{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(34px,8.4vw,60px);line-height:1.04;letter-spacing:.015em;
+  margin:0 0 18px;text-wrap:balance;
+}
+.hero .tourney{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(17px,3.6vw,22px);line-height:1.35;color:var(--ivory-dim);
+  max-width:40ch;margin:0 auto;text-wrap:balance;
+}
+.stamp{
+  margin-top:30px;display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--ivory);
+  border:1px solid var(--line);border-radius:2px;padding:10px 18px;
+  background:rgba(72,5,113,.72);
+}
+.stamp b{font-weight:500;color:var(--brass)}
+.countdown{
+  margin:18px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ivory-dim);
+}
+
+/* ---------- письмо ---------- */
+section{border-bottom:1px solid rgba(242,201,76,.2)}
+section .wrap{padding-block:46px}
+.letter{
+  font-family:var(--serif);font-size:clamp(18px,4vw,21px);line-height:1.62;
+  color:var(--ivory);max-width:62ch;margin:0 auto;
+}
+.letter .salutation{
+  font-size:clamp(21px,4.6vw,26px);font-weight:600;margin:0 0 20px;color:var(--brass);
+}
+.letter p{margin:0 0 18px}
+.letter p:last-child{margin-bottom:0}
+.sign{
+  margin-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ivory-dim);
+}
+
+/* ---------- факты ---------- */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line)}
+.fact{background:var(--panel);padding:22px 20px;min-width:0}
+.fact .k{
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 10px;
+}
+.fact .v{font-family:var(--serif);font-size:21px;line-height:1.3;margin:0}
+.fact .v small{display:block;font-family:var(--sans);font-size:13px;color:var(--ivory-dim);margin-top:6px;line-height:1.5}
+.fact .v .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- программа ---------- */
+.sec-head{text-align:center;margin:0 0 34px}
+.sec-head .kicker{
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 12px;
+}
+.sec-head h2{
+  font-family:var(--serif);font-weight:500;font-size:clamp(26px,5.6vw,36px);
+  margin:0;letter-spacing:.01em;
+}
+.moves{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.move{
+  display:grid;grid-template-columns:76px 1fr;gap:0 20px;
+  padding:18px 0;border-top:1px solid rgba(242,201,76,.2);
+  align-items:start;
+}
+.move:first-child{border-top:0}
+.move .time{
+  font-family:var(--mono);font-size:15px;font-variant-numeric:tabular-nums;
+  color:var(--brass);padding-top:3px;letter-spacing:.02em;
+}
+.move .body{min-width:0}
+.move h3{
+  font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.28;
+  margin:0;letter-spacing:.01em;
+}
+.move p{margin:6px 0 0;font-size:14.5px;color:var(--ivory-dim);line-height:1.55}
+.move.key h3{color:var(--brass)}
+
+/* ---------- подвал ---------- */
+footer{position:relative;overflow:hidden}
+footer::before{
+  content:"";position:absolute;inset:0;
+  background:url("logos/ornament.png") no-repeat center bottom -210px / 420px auto;
+  opacity:.12;
+}
+footer .wrap{position:relative;z-index:1;padding-block:38px;text-align:center}
+footer .line{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ivory-dim);margin:0;line-height:2;
+}
+
+/* ---------- эмблемы ---------- */
+.plaque{display:block;margin-bottom:22px}
+.plaque img{display:block;height:116px;width:auto;max-width:100%;margin:0 auto}
+.patrons{background:#ffffff}
+.patrons .wrap{padding-block:30px;text-align:center}
+.patrons .k{
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:#6b5a7a;margin:0 0 20px;
+}
+.crests{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:26px 34px;margin:0;padding:0;list-style:none;
+}
+.crests li{display:flex;align-items:center;justify-content:center}
+.crests img{display:block;height:64px;width:auto}
+.crests .tall img{height:72px}
+
+/* ---------- языки ---------- */
+[data-lang="ru"] [data-l]:not([data-l="ru"]),
+[data-lang="tj"] [data-l]:not([data-l="tj"]),
+[data-lang="en"] [data-l]:not([data-l="en"]){display:none !important}
+
+@media (max-width:420px){
+  .move{grid-template-columns:62px 1fr;gap:0 14px}
+  .move .time{font-size:13.5px}
+  .hero .wrap{padding-block:40px 38px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero .wrap>*{animation:rise .7s cubic-bezier(.2,.7,.3,1) backwards}
+  .hero .plaque{animation-delay:.05s}
+  .hero h1{animation-delay:.12s}
+  .hero .tourney{animation-delay:.19s}
+  .hero .stamp{animation-delay:.26s}
+  @keyframes rise{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+</style>
+
+<style>
+html{-webkit-text-size-adjust:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div id="page" data-lang="ru">
+
+  <header class="topbar">
+    <div class="wrap">
+      <div class="mark">
+        <span class="txt">
+          <span data-l="ru">Душанбе · 10.XI.2026</span>
+          <span data-l="tj">Душанбе · 10.XI.2026</span>
+          <span data-l="en">Dushanbe · 10.XI.2026</span>
+        </span>
+      </div>
+      <nav class="langs" aria-label="Язык / Забон / Language">
+        <button type="button" id="lang-ru" data-set="ru" aria-pressed="true">РУС</button>
+        <button type="button" id="lang-tj" data-set="tj" aria-pressed="false">ТОҶ</button>
+        <button type="button" id="lang-en" data-set="en" aria-pressed="false">ENG</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">
+        <span data-l="ru">Торжественная церемония открытия</span>
+        <span data-l="tj">Маросими тантанавии ифтитоҳ</span>
+        <span data-l="en">Grand opening ceremony</span>
+      </p>
+
+      <div class="plaque">
+        <img src="logos/president-cup-white.png" alt="Tajikistan President Cup" width="352" height="440">
+      </div>
+
+      <h1>
+        <span data-l="ru">Приглашение</span>
+        <span data-l="tj">Даъватнома</span>
+        <span data-l="en">Invitation</span>
+      </h1>
+
+      <p class="tourney">
+        <span data-l="ru">Международный шахматный турнир «2-ой Кубок Президента Республики Таджикистан»</span>
+        <span data-l="tj">Мусобиқаи байналмилалӣ оид ба шоҳмот «Дуюмин Ҷоми Президенти Ҷумҳурии Тоҷикистон»</span>
+        <span data-l="en">International Chess Tournament «2nd President’s Cup of the Republic of Tajikistan»</span>
+      </p>
+
+      <p class="stamp">
+        <span data-l="ru"><b>10 ноября 2026</b> · 13:00 · Crowne Plaza</span>
+        <span data-l="tj"><b>10 ноябри 2026</b> · 13:00 · Crowne Plaza</span>
+        <span data-l="en"><b>10 November 2026</b> · 1:00 PM · Crowne Plaza</span>
+      </p>
+
+      <p class="countdown" id="countdown" data-static="true">
+        <span data-l="ru">10 ноября 2026 года, зал «Istiqlol»</span>
+        <span data-l="tj">10 ноябри соли 2026, толори «Istiqlol»</span>
+        <span data-l="en">10 November 2026, Istiqlol Hall</span>
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="letter" data-l="ru">
+        <p class="salutation">Уважаемый гость!</p>
+        <p>Приглашаем Вас на торжественную церемонию открытия Международного шахматного турнира «2-ой Кубок Президента Республики Таджикистан», которая состоится 10 ноября 2026 года в 13:00 в зале «Istiqlol» отеля «Crowne Plaza».</p>
+        <p>Ваше присутствие на церемонии станет важной частью этого знаменательного события и подчеркнёт значимость шахмат как символа интеллектуального развития, стратегического мышления и стремления к новым достижениям.</p>
+        <p>Будем рады разделить с Вами этот значимый момент.</p>
+        <p class="sign">Оргкомитет турнира · Душанбе</p>
+      </div>
+
+      <div class="letter" data-l="tj">
+        <p class="salutation">Меҳмони гиромиқадр!</p>
+        <p>Шуморо ба маросими бошукӯҳи ифтитоҳи мусобиқаи байналмилалӣ оид ба шоҳмот «Дуюмин Ҷоми Президенти Ҷумҳурии Тоҷикистон», ки 10 ноябри соли 2026, соати 13:00 дар толори «Istiqlol»-и меҳмонхонаи «Crowne Plaza» баргузор мегардад, самимона даъват менамоем.</p>
+        <p>Иштироки Шумо дар ин маросим шукӯҳи тоза бахшида, нақши шоҳмотро ҳамчун рамзи рушди зеҳнӣ, тафаккури стратегӣ ва талош барои дастовардҳои нав боз ҳам таъкид хоҳад кард.</p>
+        <p>Бо камоли хушнудӣ мехоҳем ин лаҳзаи махсусро бо Шумо таҷлил намоем.</p>
+        <p class="sign">Кумитаи ташкилии мусобиқа · Душанбе</p>
+      </div>
+
+      <div class="letter" data-l="en">
+        <p class="salutation">Dear Guest,</p>
+        <p>We are pleased to invite you to the grand opening ceremony of the International Chess Tournament «2nd President’s Cup of the Republic of Tajikistan», which will take place on November 10, 2026, at 1:00 PM in the Istiqlol Hall of the Crowne Plaza Hotel.</p>
+        <p>Your presence at the ceremony will be an important part of this landmark event, highlighting the significance of chess as a symbol of intellectual development, strategic thinking, and the pursuit of new achievements.</p>
+        <p>We would be delighted to share this special and meaningful occasion with you.</p>
+        <p class="sign">Tournament Organising Committee · Dushanbe</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="facts">
+      <div class="fact">
+        <p class="k"><span data-l="ru">Дата</span><span data-l="tj">Сана</span><span data-l="en">Date</span></p>
+        <p class="v">
+          <span data-l="ru"><span class="num">10</span> ноября <span class="num">2026</span><small>вторник</small></span>
+          <span data-l="tj"><span class="num">10</span> ноябри <span class="num">2026</span><small>сешанбе</small></span>
+          <span data-l="en">November <span class="num">10</span>, <span class="num">2026</span><small>Tuesday</small></span>
+        </p>
+      </div>
+      <div class="fact">
+        <p class="k"><span data-l="ru">Время</span><span data-l="tj">Вақт</span><span data-l="en">Time</span></p>
+        <p class="v">
+          <span data-l="ru"><span class="num">13:00</span><small>сбор гостей с 12:30</small></span>
+          <span data-l="tj"><span class="num">13:00</span><small>пешвози меҳмонон аз 12:30</small></span>
+          <span data-l="en"><span class="num">1:00 PM</span><small>guests welcomed from 12:30</small></span>
+        </p>
+      </div>
+      <div class="fact">
+        <p class="k"><span data-l="ru">Место</span><span data-l="tj">Ҷойи баргузорӣ</span><span data-l="en">Venue</span></p>
+        <p class="v">
+          <span data-l="ru">Зал «Istiqlol»<small>Отель «Crowne Plaza», г. Душанбе</small></span>
+          <span data-l="tj">Толори «Istiqlol»<small>Меҳмонхонаи «Crowne Plaza», ш. Душанбе</small></span>
+          <span data-l="en">Istiqlol Hall<small>Crowne Plaza Hotel, Dushanbe</small></span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="patrons">
+    <div class="wrap">
+      <p class="k">
+        <span data-l="ru">Организаторы и партнёры турнира</span>
+        <span data-l="tj">Ташкилотчиён ва шарикони мусобиқа</span>
+        <span data-l="en">Organisers and partners of the tournament</span>
+      </p>
+      <ul class="crests">
+        <li><img src="logos/emblem-tj.png" alt="Герб Республики Таджикистан" width="364" height="360"></li>
+        <li class="tall"><img src="logos/emblem-dushanbe.png" alt="Герб города Душанбе" width="330" height="360"></li>
+        <li><img src="logos/committee-sport.png" alt="Кумитаи кор бо ҷавонон ва варзиши назди Ҳукумати Ҷумҳурии Тоҷикистон" width="359" height="360"></li>
+        <li><img src="logos/fide.png" alt="FIDE" width="513" height="360"></li>
+        <li><img src="logos/chess-federation.png" alt="Федерация шахмат Таджикистана" width="305" height="360"></li>
+        <li class="tall"><img src="logos/president-cup.png" alt="Tajikistan President Cup" width="288" height="360"></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">
+          <span data-l="ru">10 ноября · 12:30 — 15:00</span>
+          <span data-l="tj">10 ноябр · 12:30 — 15:00</span>
+          <span data-l="en">10 November · 12:30 — 15:00</span>
+        </p>
+        <h2>
+          <span data-l="ru">Программа церемонии</span>
+          <span data-l="tj">Барномаи маросим</span>
+          <span data-l="en">Ceremony programme</span>
+        </h2>
+      </div>
+
+      <ol class="moves">
+        <li class="move">
+          <div class="time">12:30</div>
+          <div class="body">
+            <h3><span data-l="ru">Встреча гостей</span><span data-l="tj">Пешвози меҳмонон</span><span data-l="en">Guest reception</span></h3>
+            <p><span data-l="ru">Сбор гостей.</span><span data-l="tj">Ҷамъ омадани меҳмонон.</span><span data-l="en">Arrival and welcoming of guests.</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">13:00</div>
+          <div class="body">
+            <h3><span data-l="ru">Художественное открытие</span><span data-l="tj">Ифтитоҳи бадеӣ</span><span data-l="en">Cultural opening</span></h3>
+            <p><span data-l="ru">Фильм о Независимом Таджикистане.</span><span data-l="tj">Намоиши филм дар бораи Тоҷикистони соҳибистиқлол.</span><span data-l="en">A film about Independent Tajikistan.</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">13:15</div>
+          <div class="body">
+            <h3><span data-l="ru">Официальная часть</span><span data-l="tj">Қисми расмӣ</span><span data-l="en">Official ceremony</span></h3>
+            <p><span data-l="ru">Торжественное открытие церемонии, выступления почётных гостей.</span><span data-l="tj">Маросими тантанавии ифтитоҳ ва суханронии меҳмонони олиқадр.</span><span data-l="en">Formal opening ceremony and speeches by distinguished guests.</span></p>
+          </div>
+        </li>
+
+        <li class="move key">
+          <div class="time">13:50</div>
+          <div class="body">
+            <h3><span data-l="ru">Страны-участницы и первый ход</span><span data-l="tj">Кишварҳои иштирокчӣ ва гашти аввал</span><span data-l="en">Participating countries and symbolic first move</span></h3>
+            <p><span data-l="ru">Представление стран — участниц турнира и символический первый ход.</span><span data-l="tj">Муаррифии кишварҳои иштирокчии мусобиқа ва анҷом додани гашти рамзии аввал.</span><span data-l="en">Introduction of the participating countries and the symbolic first move.</span></p>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">14:10</div>
+          <div class="body">
+            <h3><span data-l="ru">Концертная программа</span><span data-l="tj">Барномаи консертӣ</span><span data-l="en">Concert programme</span></h3>
+          </div>
+        </li>
+
+        <li class="move key">
+          <div class="time">14:20</div>
+          <div class="body">
+            <h3><span data-l="ru">Объявление турнира открытым</span><span data-l="tj">Эълони расмии ифтитоҳи мусобиқа</span><span data-l="en">Official declaration of the tournament opening</span></h3>
+          </div>
+        </li>
+
+        <li class="move">
+          <div class="time">15:00</div>
+          <div class="body">
+            <h3><span data-l="ru">Старт I тура</span><span data-l="tj">Оғози даври I</span><span data-l="en">Start of Round 1</span></h3>
+            <p><span data-l="ru">Гостиница «Истиклол».</span><span data-l="tj">Меҳмонхонаи «Истиқлол».</span><span data-l="en">Istiqlol Hotel.</span></p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p class="line">
+        <span data-l="ru">Международный шахматный турнир «2-ой Кубок Президента Республики Таджикистан» · Душанбе · 2026</span>
+        <span data-l="tj">Мусобиқаи байналмилалӣ оид ба шоҳмот «Дуюмин Ҷоми Президенти Ҷумҳурии Тоҷикистон» · Душанбе · 2026</span>
+        <span data-l="en">International Chess Tournament «2nd President’s Cup of the Republic of Tajikistan» · Dushanbe · 2026</span>
+      </p>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var page = document.getElementById('page');
+  var buttons = document.querySelectorAll('.langs button');
+  var LS_KEY = 'chess-invite-lang';
+
+  function setLang(code){
+    page.setAttribute('data-lang', code);
+    buttons.forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.set === code));
+    });
+    document.documentElement.setAttribute('lang', code === 'tj' ? 'tg' : code);
+    try { localStorage.setItem(LS_KEY, code); } catch (e) {}
+    renderCountdown();
+  }
+
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.dataset.set); });
+  });
+
+  try {
+    var saved = localStorage.getItem(LS_KEY);
+    if (saved === 'ru' || saved === 'tj' || saved === 'en') setLang(saved);
+  } catch (e) {}
+
+  // Церемония: 10 ноября 2026, 13:00 по Душанбе (UTC+5) = 08:00 UTC
+  var EVENT_UTC = Date.UTC(2026, 10, 10, 8, 0, 0);
+
+  function plural(n, one, few, many){
+    var n10 = n % 10, n100 = n % 100;
+    if (n10 === 1 && n100 !== 11) return one;
+    if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return few;
+    return many;
+  }
+
+  function renderCountdown(){
+    var el = document.getElementById('countdown');
+    if (!el) return;
+    var diff = EVENT_UTC - Date.now();
+    if (diff <= 0) return; // оставляем статичную подпись
+    var days = Math.ceil(diff / 86400000);
+    var lang = page.getAttribute('data-lang');
+    var text;
+    if (lang === 'tj') {
+      text = 'То маросим ' + days + ' рӯз мондааст';
+    } else if (lang === 'en') {
+      text = days + (days === 1 ? ' day' : ' days') + ' until the ceremony';
+    } else {
+      text = 'До церемонии ' + days + ' ' + plural(days, 'день', 'дня', 'дней');
+    }
+    el.textContent = text;
+    el.removeAttribute('data-static');
+  }
+
+  renderCountdown();
+})();
+</script>
+</body>
+</html>
