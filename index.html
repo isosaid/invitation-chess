@@ -133,16 +133,18 @@ h1{
 section{border-bottom:1px solid rgba(242,201,76,.2)}
 section .wrap{padding-block:46px}
 .letter{
-  font-family:var(--serif);font-size:clamp(19px,4.2vw,23px);line-height:1.66;
-  color:var(--ivory);max-width:62ch;margin:0 auto;
+  font-family:var(--sans);font-size:clamp(16px,3.6vw,19px);line-height:1.72;
+  color:var(--ivory);max-width:58ch;margin:0 auto;text-align:center;
+  font-variant-numeric:lining-nums;
 }
 .letter .salutation{
-  font-size:clamp(21px,4.6vw,26px);font-weight:600;margin:0 0 20px;color:var(--brass);
+  font-family:var(--serif);font-size:clamp(22px,4.8vw,28px);font-weight:600;
+  margin:0 0 24px;color:var(--brass);
 }
-.letter p{margin:0 0 18px}
+.letter p{margin:0 0 20px;text-wrap:pretty}
 .letter p:last-child{margin-bottom:0}
 .sign{
-  margin-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  margin-top:30px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ivory-dim);
 }
 
@@ -245,7 +247,7 @@ footer .line{
   --sans:"Noto Sans","Helvetica Neue",Arial,sans-serif;
   --mono:"Noto Sans Mono","SF Mono",Consolas,monospace;
 }
-[data-lang="tj"] .letter{font-size:clamp(17px,3.8vw,20px);line-height:1.68}
+[data-lang="tj"] .letter{font-size:clamp(15.5px,3.5vw,18px);line-height:1.74}
 [data-lang="tj"] h1{font-size:clamp(32px,7.6vw,54px);font-weight:600}
 [data-lang="tj"] .move .ev{font-size:21px;font-weight:600}
 .langs button{font-family:"Noto Sans Mono",var(--mono)}
