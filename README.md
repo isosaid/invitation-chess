@@ -17,7 +17,7 @@
 ## Как открыть
 
 Достаточно открыть `index.html` в браузере — внешних зависимостей нет,
-кроме шрифтов Google Fonts (Cormorant Garamond, Manrope, JetBrains Mono).
+кроме шрифтов Google Fonts (Noto Serif, Noto Sans, Noto Sans Mono).
 
 ## Фирменные элементы
 
