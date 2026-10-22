@@ -7,7 +7,7 @@
 <meta property="og:title" content="Приглашение · Кубок Президента Республики Таджикистан">
 <meta property="og:description" content="Торжественная церемония открытия · 10 ноября 2026, 14:00 · Душанбе, отель Crowne Plaza">
 <meta property="og:image" content="logos/president-cup.png">
-<meta name="theme-color" content="#e8e7c9">
+<meta name="theme-color" content="#fdfef0">
 <link rel="icon" href="logos/president-cup.png">
 <title>Ҷоми Президент · Приглашение</title>
 <meta name="color-scheme" content="light">
@@ -18,9 +18,9 @@
 /* Layout: one narrow engraved column — crest, letter, facts, move-by-move programme.
    Single committed visual world: dark board-green ground, ivory type, brass rules. */
 :root{
-  --ground:#e8e7c9;        /* фирменный кремовый */
-  --ground-2:#dedcb8;
-  --panel:#f2f1de;
+  --ground:#fdfef0;        /* фирменный светлый */
+  --ground-2:#f2f3dd;
+  --panel:#f8f9e7;
   --ivory:#2a1140;         /* основной текст — глубокий фиолетовый */
   --ivory-dim:#5c5542;     /* приглушённый текст */
   --brass:#5a078d;         /* акцент — фирменный фиолетовый */
@@ -52,7 +52,7 @@ body{
   position:sticky;
   top:env(safe-area-inset-top,0px);
   z-index:20;
-  background:rgba(232,231,201,.94);
+  background:rgba(253,254,240,.94);
   backdrop-filter:blur(8px);
   border-bottom:1px solid rgba(90,7,141,.2);
 }
@@ -95,7 +95,7 @@ body::before{
 }
 .hero::after{
   content:"";position:absolute;inset:0;
-  background:radial-gradient(74% 64% at 50% 45%,rgba(252,251,238,.72) 0%,rgba(252,251,238,.3) 58%,rgba(252,251,238,0) 100%);
+  background:radial-gradient(74% 64% at 50% 45%,rgba(255,255,250,.7) 0%,rgba(255,255,250,.28) 58%,rgba(255,255,250,0) 100%);
 }
 .hero .wrap{position:relative;z-index:1;padding-block:54px 48px;text-align:center}
 .eyebrow{
@@ -122,7 +122,7 @@ h1{
   margin-top:30px;display:inline-flex;align-items:center;gap:14px;
   font-family:var(--mono);font-size:13.5px;font-weight:700;letter-spacing:.11em;color:var(--ivory);
   border:1px solid var(--line);border-radius:2px;padding:10px 18px;
-  background:rgba(252,251,238,.7);
+  background:rgba(255,255,250,.72);
 }
 .stamp b{font-weight:500;color:var(--brass)}
 .countdown{
