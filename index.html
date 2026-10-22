@@ -7,10 +7,10 @@
 <meta property="og:title" content="Приглашение · Кубок Президента Республики Таджикистан">
 <meta property="og:description" content="Торжественная церемония открытия · 10 ноября 2026, 13:30 · Душанбе, отель Crowne Plaza">
 <meta property="og:image" content="logos/president-cup.png">
-<meta name="theme-color" content="#5a078d">
+<meta name="theme-color" content="#e8e7c9">
 <link rel="icon" href="logos/president-cup.png">
 <title>Ҷоми Президент · Приглашение</title>
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Mono:wght@400;500&display=swap">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,18 +18,18 @@
 /* Layout: one narrow engraved column — crest, letter, facts, move-by-move programme.
    Single committed visual world: dark board-green ground, ivory type, brass rules. */
 :root{
-  --ground:#5a078d;        /* фирменный фиолетовый */
-  --ground-2:#4d0579;      /* второе поле доски */
-  --panel:#480571;
-  --ivory:#ffffff;
-  --ivory-dim:#d9c7e8;
-  --brass:#f2c94c;
-  --brass-soft:#d1a63a;
-  --line:rgba(242,201,76,.34);
+  --ground:#e8e7c9;        /* фирменный кремовый */
+  --ground-2:#dedcb8;
+  --panel:#f2f1de;
+  --ivory:#2a1140;         /* основной текст — глубокий фиолетовый */
+  --ivory-dim:#5c5542;     /* приглушённый текст */
+  --brass:#5a078d;         /* акцент — фирменный фиолетовый */
+  --brass-soft:#8a3fb0;
+  --line:rgba(90,7,141,.26);
   --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
   --sans:"Manrope","Helvetica Neue",Arial,sans-serif;
   --mono:"JetBrains Mono","SF Mono",Consolas,monospace;
-  color-scheme:dark;
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 body{
@@ -52,9 +52,9 @@ body{
   position:sticky;
   top:env(safe-area-inset-top,0px);
   z-index:20;
-  background:rgba(72,5,113,.93);
+  background:rgba(232,231,201,.94);
   backdrop-filter:blur(8px);
-  border-bottom:1px solid rgba(242,201,76,.22);
+  border-bottom:1px solid rgba(90,7,141,.2);
 }
 body::before{
   content:"";position:fixed;inset:0 0 auto;
@@ -90,12 +90,12 @@ body::before{
 .hero::before{
   content:"";position:absolute;inset:0;
   background:
-    url("logos/ornament.png") no-repeat center center / min(620px,94vw) auto;
-  opacity:.26;
+    url("logos/ornament-dark.png") no-repeat center center / min(620px,94vw) auto;
+  opacity:.17;
 }
 .hero::after{
   content:"";position:absolute;inset:0;
-  background:radial-gradient(72% 62% at 50% 45%,rgba(58,3,92,.55) 0%,rgba(58,3,92,.22) 58%,rgba(58,3,92,0) 100%);
+  background:radial-gradient(74% 64% at 50% 45%,rgba(252,251,238,.72) 0%,rgba(252,251,238,.3) 58%,rgba(252,251,238,0) 100%);
 }
 .hero .wrap{position:relative;z-index:1;padding-block:54px 48px;text-align:center}
 .eyebrow{
@@ -122,7 +122,7 @@ h1{
   margin-top:30px;display:inline-flex;align-items:center;gap:14px;
   font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--ivory);
   border:1px solid var(--line);border-radius:2px;padding:10px 18px;
-  background:rgba(72,5,113,.72);
+  background:rgba(252,251,238,.7);
 }
 .stamp b{font-weight:500;color:var(--brass)}
 .countdown{
@@ -131,7 +131,7 @@ h1{
 }
 
 /* ---------- письмо ---------- */
-section{border-bottom:1px solid rgba(242,201,76,.2)}
+section{border-bottom:1px solid rgba(90,7,141,.18)}
 section .wrap{padding-block:46px}
 .letter{
   font-family:var(--sans);font-size:clamp(16px,3.6vw,19px);line-height:1.72;
@@ -167,7 +167,7 @@ section .wrap{padding-block:46px}
   padding:16px 0;margin:0 0 30px;
   border-top:1px solid var(--brass-soft);border-bottom:1px solid var(--brass-soft);
 }
-.prog-facts .pf + .pf{border-left:1px solid rgba(242,201,76,.28);padding-left:26px}
+.prog-facts .pf + .pf{border-left:1px solid rgba(90,7,141,.24);padding-left:26px}
 .prog-facts .k{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--brass);margin:0 0 8px;
@@ -177,7 +177,7 @@ section .wrap{padding-block:46px}
 .prog-facts .v small{display:block;font-size:14px;color:var(--ivory-dim);margin-top:4px;font-weight:400}
 @media (max-width:720px){
   .prog-facts{grid-template-columns:1fr;gap:16px 0}
-  .prog-facts .pf + .pf{border-left:0;padding-left:0;border-top:1px solid rgba(242,201,76,.22);padding-top:16px}
+  .prog-facts .pf + .pf{border-left:0;padding-left:0;border-top:1px solid rgba(90,7,141,.18);padding-top:16px}
 }
 
 .agenda{display:flex;flex-direction:column}
@@ -192,7 +192,7 @@ section .wrap{padding-block:46px}
 .moves{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .move{
   display:grid;grid-template-columns:38px 118px minmax(180px,1.05fr) 1.45fr;gap:0 22px;
-  padding:17px 0;border-top:1px solid rgba(242,201,76,.2);align-items:start;
+  padding:17px 0;border-top:1px solid rgba(90,7,141,.18);align-items:start;
 }
 .move:first-child{border-top:0}
 .move .num{
@@ -214,8 +214,8 @@ section .wrap{padding-block:46px}
 footer{position:relative;overflow:hidden}
 footer::before{
   content:"";position:absolute;inset:0;
-  background:url("logos/ornament.png") no-repeat center bottom -210px / 420px auto;
-  opacity:.12;
+  background:url("logos/ornament-dark.png") no-repeat center bottom -210px / 420px auto;
+  opacity:.1;
 }
 footer .wrap{position:relative;z-index:1;padding-block:38px;text-align:center}
 footer .line{
@@ -233,12 +233,7 @@ footer .line{
   color:var(--brass);margin:0 0 18px;
 }
 .crest-band{
-  background-color:#ffffff;
-  background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAFUlEQVR42mP8//8/AzbAxIADDE4JAFbUAw3/dxQWAAAAAElFTkSuQmCC");
-  background-repeat:repeat;
-  border:1px solid rgba(255,255,255,.9);
-  border-radius:3px;
-  padding:22px 20px;
+  padding:18px 0 4px;
 }
 .crests{
   display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
@@ -323,7 +318,7 @@ img{max-width:100%}
       </p>
 
       <div class="plaque">
-        <img src="logos/president-cup-white.png" alt="Tajikistan President Cup" width="352" height="440">
+        <img src="logos/president-cup.png" alt="Tajikistan President Cup" width="288" height="360">
       </div>
 
       <h1>
