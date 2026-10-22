@@ -21,11 +21,11 @@
   --ground:#fdfef0;        /* фирменный светлый */
   --ground-2:#f2f3dd;
   --panel:#f8f9e7;
-  --ivory:#2a1140;         /* основной текст — глубокий фиолетовый */
-  --ivory-dim:#5c5542;     /* приглушённый текст */
-  --brass:#5a078d;         /* акцент — фирменный фиолетовый */
-  --brass-soft:#8a3fb0;
-  --line:rgba(90,7,141,.26);
+  --ivory:#251339;         /* единый тёмно-фиолетовый */
+  --ivory-dim:rgba(37,19,57,.72);   /* он же, приглушённый */
+  --brass:#251339;
+  --brass-soft:#251339;
+  --line:rgba(37,19,57,.26);
   --serif:"Noto Serif",Georgia,"Times New Roman",serif;
   --sans:"Noto Sans","Helvetica Neue",Arial,sans-serif;
   --mono:"Noto Sans Mono","SF Mono",Consolas,monospace;
@@ -54,7 +54,7 @@ body{
   z-index:20;
   background:rgba(253,254,240,.94);
   backdrop-filter:blur(8px);
-  border-bottom:1px solid rgba(90,7,141,.2);
+  border-bottom:1px solid rgba(37,19,57,.2);
 }
 body::before{
   content:"";position:fixed;inset:0 0 auto;
@@ -131,7 +131,7 @@ h1{
 }
 
 /* ---------- письмо ---------- */
-section{border-bottom:1px solid rgba(90,7,141,.18)}
+section{border-bottom:1px solid rgba(37,19,57,.18)}
 section .wrap{padding-block:46px}
 .letter{
   font-family:var(--sans);font-size:clamp(15.5px,3.5vw,18px);line-height:1.74;
@@ -167,7 +167,7 @@ section .wrap{padding-block:46px}
   padding:16px 0;margin:0 0 30px;
   border-top:1px solid var(--brass-soft);border-bottom:1px solid var(--brass-soft);
 }
-.prog-facts .pf + .pf{border-left:1px solid rgba(90,7,141,.24);padding-left:26px}
+.prog-facts .pf + .pf{border-left:1px solid rgba(37,19,57,.24);padding-left:26px}
 .prog-facts .k{
   font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
   color:var(--brass);margin:0 0 8px;
@@ -177,7 +177,7 @@ section .wrap{padding-block:46px}
 .prog-facts .v small{display:block;font-size:14px;color:var(--ivory-dim);margin-top:4px;font-weight:400}
 @media (max-width:720px){
   .prog-facts{grid-template-columns:1fr;gap:16px 0}
-  .prog-facts .pf + .pf{border-left:0;padding-left:0;border-top:1px solid rgba(90,7,141,.18);padding-top:16px}
+  .prog-facts .pf + .pf{border-left:0;padding-left:0;border-top:1px solid rgba(37,19,57,.18);padding-top:16px}
 }
 
 .agenda{display:flex;flex-direction:column}
@@ -192,7 +192,7 @@ section .wrap{padding-block:46px}
 .moves{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .move{
   display:grid;grid-template-columns:38px 118px minmax(180px,1.05fr) 1.45fr;gap:0 22px;
-  padding:17px 0;border-top:1px solid rgba(90,7,141,.18);align-items:start;
+  padding:17px 0;border-top:1px solid rgba(37,19,57,.18);align-items:start;
 }
 .move:first-child{border-top:0}
 .move .num{
