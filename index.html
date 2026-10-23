@@ -7,7 +7,7 @@
 <meta property="og:title" content="Приглашение · 2-ой Кубок Президента Республики Таджикистан">
 <meta property="og:description" content="Торжественная церемония открытия · 10 ноября 2026, 14:00 · Душанбе, отель Crowne Plaza">
 <meta property="og:image" content="logos/president-cup.png">
-<meta name="theme-color" content="#2e1d11">
+<meta name="theme-color" content="#452f1b">
 <link rel="icon" href="logos/president-cup.png">
 <title>Ҷоми Президент · Приглашение</title>
 <meta name="color-scheme" content="dark">
@@ -18,12 +18,12 @@
 /* Layout: one narrow engraved column — crest, letter, facts, move-by-move programme.
    Single committed visual world: dark board-green ground, ivory type, brass rules. */
 :root{
-  --ground:#2e1d11;        /* дерево сайта, на тон светлее */
-  --ground-2:#38240f;
-  --panel:#3d2917;
-  --ivory:#ece0c6;         /* --ink */
-  --ivory-dim:#a8967a;     /* --ink-dim */
-  --brass:#d2a54e;         /* --gold */
+  --ground:#452f1b;        /* дерево сайта, ещё светлее */
+  --ground-2:#503823;
+  --panel:#5a4029;
+  --ivory:#f3e9d4;         /* --ink, поднят для контраста */
+  --ivory-dim:#c2ae8c;
+  --brass:#e4b961;         /* --gold, светлее под новый фон */
   --brass-soft:#b8934a;
   --line:rgba(210,165,78,.26);
   --serif:'Inter','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
@@ -153,7 +153,7 @@ body.sealed{overflow:hidden}
   position:sticky;
   top:env(safe-area-inset-top,0px);
   z-index:20;
-  background:rgba(46,29,17,.94);
+  background:rgba(69,47,27,.94);
   backdrop-filter:blur(8px);
   border-bottom:1px solid rgba(210,165,78,.22);
 }
@@ -196,7 +196,7 @@ body::before{
 }
 .hero::after{
   content:"";position:absolute;inset:0;
-  background:radial-gradient(74% 64% at 50% 45%,rgba(46,29,17,.58) 0%,rgba(46,29,17,.2) 58%,rgba(46,29,17,0) 100%);
+  background:radial-gradient(74% 64% at 50% 45%,rgba(69,47,27,.55) 0%,rgba(69,47,27,.18) 58%,rgba(69,47,27,0) 100%);
 }
 .hero .wrap{position:relative;z-index:1;padding-block:64px 56px;text-align:center}
 .hero .wrap::before,.hero .wrap::after{
@@ -232,7 +232,7 @@ h1{
   margin-top:30px;display:inline-flex;align-items:center;gap:14px;
   font-family:var(--mono);font-size:13.5px;font-weight:700;letter-spacing:.11em;color:var(--ivory);
   border:1px solid var(--brass-soft);border-radius:2px;padding:13px 24px;
-  background:rgba(61,41,23,.6);
+  background:rgba(90,64,41,.55);
 }
 .stamp b{font-weight:500;color:var(--brass)}
 .countdown{
