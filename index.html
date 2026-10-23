@@ -7,7 +7,7 @@
 <meta property="og:title" content="Приглашение · 2-ой Кубок Президента Республики Таджикистан">
 <meta property="og:description" content="Торжественная церемония открытия · 10 ноября 2026, 14:00 · Душанбе, отель Crowne Plaza">
 <meta property="og:image" content="logos/president-cup.png">
-<meta name="theme-color" content="#150d08">
+<meta name="theme-color" content="#2e1d11">
 <link rel="icon" href="logos/president-cup.png">
 <title>Ҷоми Президент · Приглашение</title>
 <meta name="color-scheme" content="dark">
@@ -18,9 +18,9 @@
 /* Layout: one narrow engraved column — crest, letter, facts, move-by-move programme.
    Single committed visual world: dark board-green ground, ivory type, brass rules. */
 :root{
-  --ground:#150d08;        /* --night сайта */
-  --ground-2:#1e1209;
-  --panel:#241609;
+  --ground:#2e1d11;        /* дерево сайта, на тон светлее */
+  --ground-2:#38240f;
+  --panel:#3d2917;
   --ivory:#ece0c6;         /* --ink */
   --ivory-dim:#a8967a;     /* --ink-dim */
   --brass:#d2a54e;         /* --gold */
@@ -119,7 +119,7 @@ body{
 .env-seal{
   position:absolute;left:50%;top:48%;z-index:7;width:84px;height:84px;
   transform:translate(-50%,-50%);border-radius:50%;
-  background:radial-gradient(circle at 34% 30%, #4e3418 0%, #2b1b10 62%, #150d08 100%);
+  background:radial-gradient(circle at 34% 30%, #6b4a22 0%, #42290f 62%, #2b1b10 100%);
   box-shadow:0 6px 16px rgba(0,0,0,.5), inset 0 0 0 3px rgba(236,224,198,.2);
   display:grid;place-items:center;color:#ece0c6;font-size:38px;line-height:1;z-index:7;
   transition:transform .5s ease, opacity .5s ease;
@@ -153,7 +153,7 @@ body.sealed{overflow:hidden}
   position:sticky;
   top:env(safe-area-inset-top,0px);
   z-index:20;
-  background:rgba(21,13,8,.94);
+  background:rgba(46,29,17,.94);
   backdrop-filter:blur(8px);
   border-bottom:1px solid rgba(210,165,78,.22);
 }
@@ -196,7 +196,7 @@ body::before{
 }
 .hero::after{
   content:"";position:absolute;inset:0;
-  background:radial-gradient(74% 64% at 50% 45%,rgba(21,13,8,.6) 0%,rgba(21,13,8,.2) 58%,rgba(21,13,8,0) 100%);
+  background:radial-gradient(74% 64% at 50% 45%,rgba(46,29,17,.58) 0%,rgba(46,29,17,.2) 58%,rgba(46,29,17,0) 100%);
 }
 .hero .wrap{position:relative;z-index:1;padding-block:64px 56px;text-align:center}
 .hero .wrap::before,.hero .wrap::after{
@@ -232,7 +232,7 @@ h1{
   margin-top:30px;display:inline-flex;align-items:center;gap:14px;
   font-family:var(--mono);font-size:13.5px;font-weight:700;letter-spacing:.11em;color:var(--ivory);
   border:1px solid var(--brass-soft);border-radius:2px;padding:13px 24px;
-  background:rgba(36,22,9,.72);
+  background:rgba(61,41,23,.6);
 }
 .stamp b{font-weight:500;color:var(--brass)}
 .countdown{
