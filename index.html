@@ -277,6 +277,13 @@ section .wrap{padding-block:46px}
   left:auto;top:auto;width:auto;height:auto;transform:none;
 }
 .board.locked .sq{cursor:default}
+.board-mode{display:inline-flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.board-mode button{
+  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 16px;border:0;background:transparent;color:var(--ivory-dim);cursor:pointer;
+}
+.board-mode button[aria-pressed="true"]{background:var(--brass);color:var(--ground)}
+.board-mode button:focus-visible{outline:2px solid var(--brass);outline-offset:-2px}
 .board-status{
   margin:0;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:var(--brass);min-height:1.4em;
@@ -695,6 +702,19 @@ img{max-width:100%}
         </div>
 
         <p class="board-status" id="board-status"></p>
+
+        <div class="board-mode">
+          <button type="button" id="mode-ai" aria-pressed="true">
+            <span data-l="ru">С компьютером</span>
+            <span data-l="tj">Бо компютер</span>
+            <span data-l="en">Versus computer</span>
+          </button>
+          <button type="button" id="mode-duo" aria-pressed="false">
+            <span data-l="ru">Вдвоём</span>
+            <span data-l="tj">Дунафара</span>
+            <span data-l="en">Two players</span>
+          </button>
+        </div>
 
         <div class="board-move">
           <button type="button" id="btn-first">
@@ -2559,15 +2579,17 @@ if (typeof define !== 'undefined')
   };
   var T = {
     ru:{w:'Ход белых', b:'Ход чёрных', check:'Шах', mateW:'Мат — победили белые',
-        mateB:'Мат — победили чёрные', draw:'Ничья'},
+        mateB:'Мат — победили чёрные', draw:'Ничья', think:'Компьютер думает…'},
     tj:{w:'Навбати сафед', b:'Навбати сиёҳ', check:'Шоҳ', mateW:'Мот — сафед ғолиб омад',
-        mateB:'Мот — сиёҳ ғолиб омад', draw:'Баробар'},
+        mateB:'Мот — сиёҳ ғолиб омад', draw:'Баробар', think:'Компютер фикр мекунад…'},
     en:{w:'White to move', b:'Black to move', check:'Check', mateW:'Checkmate — White wins',
-        mateB:'Checkmate — Black wins', draw:'Draw'}
+        mateB:'Checkmate — Black wins', draw:'Draw', think:'The computer is thinking…'}
   };
 
   var boardEl = document.getElementById('board');
   var game, selected = null, lastMove = null, flipped = false;
+  var vsComputer = true, thinking = false;
+  var HUMAN = 'w';            // гость играет белыми
 
   function squares(){
     var ranks = [8,7,6,5,4,3,2,1], files = FILES.slice();
@@ -2588,7 +2610,8 @@ if (typeof define !== 'undefined')
     if (!el || typeof game === 'undefined' || !game) return;
     var t = T[page.getAttribute('data-lang')] || T.ru;
     var text;
-    if (game.in_checkmate())      text = game.turn() === 'w' ? t.mateB : t.mateW;
+    if (thinking)                 text = t.think;
+    else if (game.in_checkmate())      text = game.turn() === 'w' ? t.mateB : t.mateW;
     else if (game.in_draw() || game.in_stalemate()) text = t.draw;
     else {
       text = game.turn() === 'w' ? t.w : t.b;
@@ -2643,14 +2666,142 @@ if (typeof define !== 'undefined')
   }
 
   function onSquare(name){
-    if (game.game_over()) return;
+    if (game.game_over() || thinking) return;
+    if (vsComputer && game.turn() !== HUMAN) return;
     if (selected) {
       var mv = game.move({ from: selected, to: name, promotion: 'q' });
-      if (mv) { lastMove = mv; selected = null; render(); return; }
+      if (mv) { lastMove = mv; selected = null; render(); replyIfNeeded(); return; }
     }
     var piece = game.get(name);
     selected = (piece && piece.color === game.turn()) ? name : null;
     render();
+  }
+
+
+  /* ---------- соперник: альфа-бета поверх того же движка ---------- */
+  var VAL = { p:100, n:320, b:330, r:500, q:900, k:20000 };
+  // таблицы расположения — доска записана с точки зрения белых, a8 слева сверху
+  var PST = {
+    p:[  0,  0,  0,  0,  0,  0,  0,  0,
+        50, 50, 50, 50, 50, 50, 50, 50,
+        10, 10, 20, 30, 30, 20, 10, 10,
+         5,  5, 10, 25, 25, 10,  5,  5,
+         0,  0,  0, 20, 20,  0,  0,  0,
+         5, -5,-10,  0,  0,-10, -5,  5,
+         5, 10, 10,-20,-20, 10, 10,  5,
+         0,  0,  0,  0,  0,  0,  0,  0],
+    n:[-50,-40,-30,-30,-30,-30,-40,-50,
+       -40,-20,  0,  0,  0,  0,-20,-40,
+       -30,  0, 10, 15, 15, 10,  0,-30,
+       -30,  5, 15, 20, 20, 15,  5,-30,
+       -30,  0, 15, 20, 20, 15,  0,-30,
+       -30,  5, 10, 15, 15, 10,  5,-30,
+       -40,-20,  0,  5,  5,  0,-20,-40,
+       -50,-40,-30,-30,-30,-30,-40,-50],
+    b:[-20,-10,-10,-10,-10,-10,-10,-20,
+       -10,  0,  0,  0,  0,  0,  0,-10,
+       -10,  0,  5, 10, 10,  5,  0,-10,
+       -10,  5,  5, 10, 10,  5,  5,-10,
+       -10,  0, 10, 10, 10, 10,  0,-10,
+       -10, 10, 10, 10, 10, 10, 10,-10,
+       -10,  5,  0,  0,  0,  0,  5,-10,
+       -20,-10,-10,-10,-10,-10,-10,-20],
+    r:[  0,  0,  0,  0,  0,  0,  0,  0,
+         5, 10, 10, 10, 10, 10, 10,  5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+        -5,  0,  0,  0,  0,  0,  0, -5,
+         0,  0,  0,  5,  5,  0,  0,  0],
+    q:[-20,-10,-10, -5, -5,-10,-10,-20,
+       -10,  0,  0,  0,  0,  0,  0,-10,
+       -10,  0,  5,  5,  5,  5,  0,-10,
+        -5,  0,  5,  5,  5,  5,  0, -5,
+         0,  0,  5,  5,  5,  5,  0, -5,
+       -10,  5,  5,  5,  5,  5,  0,-10,
+       -10,  0,  5,  0,  0,  0,  0,-10,
+       -20,-10,-10, -5, -5,-10,-10,-20],
+    k:[-30,-40,-40,-50,-50,-40,-40,-30,
+       -30,-40,-40,-50,-50,-40,-40,-30,
+       -30,-40,-40,-50,-50,-40,-40,-30,
+       -30,-40,-40,-50,-50,-40,-40,-30,
+       -20,-30,-30,-40,-40,-30,-30,-20,
+       -10,-20,-20,-20,-20,-20,-20,-10,
+        20, 20,  0,  0,  0,  0, 20, 20,
+        20, 30, 10,  0,  0, 10, 30, 20]
+  };
+
+  function evaluate(g){
+    var rows = g.board(), score = 0;
+    for (var r = 0; r < 8; r++) {
+      for (var c = 0; c < 8; c++) {
+        var pc = rows[r][c];
+        if (!pc) continue;
+        var i = r * 8 + c;                               // белые читают таблицу как есть
+        var idx = pc.color === 'w' ? i : (7 - r) * 8 + c; // для чёрных — зеркально по горизонтали
+        var v = VAL[pc.type] + PST[pc.type][idx];
+        score += pc.color === 'w' ? v : -v;
+      }
+    }
+    return score;
+  }
+
+  function ordered(g){
+    return g.moves({ verbose: true }).sort(function(a, b){
+      var av = (a.captured ? VAL[a.captured] : 0) + (a.promotion ? 800 : 0);
+      var bv = (b.captured ? VAL[b.captured] : 0) + (b.promotion ? 800 : 0);
+      return bv - av;                                   // взятия просматриваем первыми
+    });
+  }
+
+  function search(g, depth, alpha, beta, deadline){
+    if (depth === 0) return evaluate(g);
+    var moves = ordered(g);
+    if (!moves.length) return g.in_check() ? (g.turn() === 'w' ? -99999 + depth : 99999 - depth) : 0;
+    var white = g.turn() === 'w', best = white ? -1e9 : 1e9;
+    for (var i = 0; i < moves.length; i++) {
+      if (Date.now() > deadline) break;                 // выходим по времени, не вешая вкладку
+      g.move(moves[i]);
+      var val = search(g, depth - 1, alpha, beta, deadline);
+      g.undo();
+      if (white) { if (val > best) best = val; if (best > alpha) alpha = best; }
+      else       { if (val < best) best = val; if (best < beta)  beta  = best; }
+      if (beta <= alpha) break;
+    }
+    return best;
+  }
+
+  function bestMove(g){
+    var deadline = Date.now() + 1200, best = null;
+    // итеративное углубление: на медленном телефоне останется результат меньшей глубины
+    for (var depth = 2; depth <= 3; depth++) {
+      var moves = ordered(g), white = g.turn() === 'w';
+      var localBest = null, localVal = white ? -1e9 : 1e9, done = true;
+      for (var i = 0; i < moves.length; i++) {
+        if (Date.now() > deadline) { done = false; break; }
+        g.move(moves[i]);
+        var val = search(g, depth - 1, -1e9, 1e9, deadline);
+        g.undo();
+        if (white ? val > localVal : val < localVal) { localVal = val; localBest = moves[i]; }
+      }
+      if (localBest && (done || !best)) best = localBest;
+      if (!done) break;
+    }
+    return best || ordered(g)[0] || null;
+  }
+
+  function replyIfNeeded(){
+    if (!vsComputer || game.game_over() || game.turn() === HUMAN) return;
+    thinking = true;
+    renderStatus();
+    setTimeout(function(){
+      var mv = bestMove(game);
+      if (mv) { game.move(mv); lastMove = mv; }
+      thinking = false;
+      selected = null;
+      render();
+    }, 180);
   }
 
   if (boardEl && typeof Chess === 'function') {
@@ -2665,18 +2816,34 @@ if (typeof define !== 'undefined')
     if (first) first.addEventListener('click', function(){
       if (game.history().length) return;      // символический ход делается с начальной позиции
       var mv = game.move('e4');
-      if (mv) { lastMove = mv; selected = null; render(); }
+      if (mv) { lastMove = mv; selected = null; render(); replyIfNeeded(); }
     });
     if (undo) undo.addEventListener('click', function(){
-      game.undo(); lastMove = null; selected = null; render();
+      if (thinking) return;
+      game.undo();                                  // свой ход
+      if (vsComputer && game.turn() !== HUMAN) game.undo();   // и ответ компьютера
+      lastMove = null; selected = null; render();
     });
     if (flip) flip.addEventListener('click', function(){
       flipped = !flipped; renderCoords(); render();
     });
     if (fresh) fresh.addEventListener('click', function(){
+      if (thinking) return;
       game.reset(); lastMove = null; selected = null; flipped = false;
       renderCoords(); render();
     });
+
+    var modeAi = byId('mode-ai'), modeDuo = byId('mode-duo');
+    function setMode(ai){
+      if (thinking) return;
+      vsComputer = ai;
+      if (modeAi)  modeAi.setAttribute('aria-pressed', String(ai));
+      if (modeDuo) modeDuo.setAttribute('aria-pressed', String(!ai));
+      renderStatus();
+      replyIfNeeded();
+    }
+    if (modeAi)  modeAi.addEventListener('click',  function(){ setMode(true); });
+    if (modeDuo) modeDuo.addEventListener('click', function(){ setMode(false); });
   }
 
 })();
