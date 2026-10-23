@@ -97,7 +97,16 @@ body::before{
   content:"";position:absolute;inset:0;
   background:radial-gradient(74% 64% at 50% 45%,rgba(255,255,250,.7) 0%,rgba(255,255,250,.28) 58%,rgba(255,255,250,0) 100%);
 }
-.hero .wrap{position:relative;z-index:1;padding-block:54px 48px;text-align:center}
+.hero .wrap{position:relative;z-index:1;padding-block:64px 56px;text-align:center}
+.hero .wrap::before,.hero .wrap::after{
+  content:"";position:absolute;pointer-events:none;border:1px solid var(--line);
+}
+.hero .wrap::before{inset:22px 4px}
+.hero .wrap::after{inset:28px 10px;border-color:rgba(37,19,57,.14)}
+@media (max-width:520px){
+  .hero .wrap::before{inset:14px 0}
+  .hero .wrap::after{inset:19px 6px}
+}
 .eyebrow{
   font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
   color:var(--brass);margin:0 0 26px;
@@ -121,7 +130,7 @@ h1{
 .stamp{
   margin-top:30px;display:inline-flex;align-items:center;gap:14px;
   font-family:var(--mono);font-size:13.5px;font-weight:700;letter-spacing:.11em;color:var(--ivory);
-  border:1px solid var(--line);border-radius:2px;padding:10px 18px;
+  border:1px solid var(--brass-soft);border-radius:2px;padding:13px 24px;
   background:rgba(255,255,250,.72);
 }
 .stamp b{font-weight:500;color:var(--brass)}
@@ -131,7 +140,11 @@ h1{
 }
 
 /* ---------- письмо ---------- */
-section{border-bottom:1px solid rgba(37,19,57,.18)}
+section{position:relative;border-bottom:1px solid rgba(37,19,57,.22)}
+section::after{
+  content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;
+  background:rgba(37,19,57,.1);
+}
 section .wrap{padding-block:46px}
 .letter{
   font-family:var(--sans);font-size:clamp(15.5px,3.5vw,18px);line-height:1.74;
@@ -210,6 +223,85 @@ section .wrap{padding-block:46px}
 .move .desc{margin:0;font-size:16px;color:var(--ivory-dim);line-height:1.55;min-width:0;padding-top:7px}
 .move.key .ev{color:var(--brass)}
 
+/* ---------- доска (из проекта Шоҳматнома / shahmatnameh.tj) ---------- */
+.board-sec .wrap{padding-block:52px;text-align:center}
+.board-sec .kicker{
+  font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 12px;
+}
+.board-sec h2{
+  font-family:var(--serif);font-weight:600;font-size:clamp(24px,4.6vw,34px);line-height:1.2;
+  margin:0 0 10px;text-wrap:balance;
+}
+.board-sec .lead{
+  margin:0 auto 30px;max-width:52ch;font-size:16px;color:var(--ivory-dim);line-height:1.6;
+}
+.board-wrap{display:flex;flex-direction:column;align-items:center;gap:20px}
+.board-frame{
+  --wood-2:#3d2917;
+  background:var(--wood-2);border:8px solid var(--wood-2);border-radius:4px;padding:12px;
+  box-shadow:0 14px 34px rgba(37,19,57,.32);
+  width:min(440px,100%);
+}
+.board-grid{
+  display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto 1fr auto;
+  gap:4px;align-items:stretch;
+}
+.board{
+  grid-column:2;grid-row:2;
+  display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);
+  aspect-ratio:1/1;width:100%;border:2px solid #6b5233;
+}
+.sq{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  user-select:none;min-width:0;min-height:0;
+}
+.sq.light{background:#f0d9b5}
+.sq.dark{background:#b58863}
+.sq.hint::after{
+  content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 3px rgba(210,165,78,.95);
+}
+.piece{
+  display:flex;align-items:center;justify-content:center;width:100%;height:100%;
+  line-height:1;font-size:min(9vw,42px);
+  transition:transform .85s cubic-bezier(.22,.68,.3,1);
+}
+.piece.pc-w{color:#faf6ee;-webkit-text-stroke:2px #101010;paint-order:stroke fill;
+  text-shadow:0 2px 4px rgba(0,0,0,.4)}
+.piece.pc-b{color:#37322b;-webkit-text-stroke:2px #1a1611;paint-order:stroke fill;
+  text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.ranks{display:flex;flex-direction:column;justify-content:space-around;height:100%}
+.ranks.left{grid-column:1;grid-row:2}
+.ranks.right{grid-column:3;grid-row:2}
+.files{display:grid;grid-template-columns:repeat(8,1fr);grid-column:2}
+.files.top{grid-row:1}
+.files.bottom{grid-row:3}
+.ranks span,.files span{
+  font-family:var(--mono);font-size:11px;font-weight:700;color:#c7b393;
+  text-align:center;line-height:1.6;
+}
+.board-move{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;
+}
+.board-move button{
+  font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:11px 20px;border:1px solid var(--brass);border-radius:2px;
+  background:transparent;color:var(--brass);cursor:pointer;
+  transition:background .2s,color .2s;
+}
+.board-move button:hover{background:var(--brass);color:var(--ground)}
+.board-move button:disabled{opacity:.45;cursor:default}
+.board-move button:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.board-move .notation{
+  font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.1em;
+  color:var(--ivory-dim);min-width:7ch;
+}
+.board-credit{
+  margin:0;font-size:14px;color:var(--ivory-dim);
+}
+.board-credit a{color:var(--brass);text-decoration:none;border-bottom:1px solid var(--line)}
+.board-credit a:hover{border-bottom-color:var(--brass)}
+
 /* ---------- подвал ---------- */
 footer{position:relative;overflow:hidden}
 footer::before{
@@ -225,7 +317,7 @@ footer .line{
 
 /* ---------- эмблемы ---------- */
 .plaque{display:block;margin-bottom:22px}
-.plaque img{display:block;height:116px;width:auto;max-width:100%;margin:0 auto}
+.plaque img{display:block;height:134px;width:auto;max-width:100%;margin:0 auto}
 .patrons{background:transparent}
 .patrons .wrap{padding-block:34px;text-align:center}
 .patrons .k{
@@ -548,6 +640,54 @@ img{max-width:100%}
     </div>
   </section>
 
+  <section class="board-sec">
+    <div class="wrap">
+      <p class="kicker">
+        <span data-l="ru">Символический первый ход</span>
+        <span data-l="tj">Ҳаракати рамзии аввал</span>
+        <span data-l="en">The ceremonial first move</span>
+      </p>
+      <h2>
+        <span data-l="ru">Партия начинается здесь</span>
+        <span data-l="tj">Бозӣ аз ин ҷо оғоз меёбад</span>
+        <span data-l="en">The game begins here</span>
+      </h2>
+      <p class="lead">
+        <span data-l="ru">В 15:15 почётные гости поднимутся на сцену и сделают первый ход турнира. Сделайте его и Вы — прямо сейчас.</span>
+        <span data-l="tj">Соати 15:15 меҳмонони олиқадр ба саҳна мебароянд ва ҳаракати аввали мусобиқаро анҷом медиҳанд. Шумо низ онро ҳозир анҷом дода метавонед.</span>
+        <span data-l="en">At 15:15 the distinguished guests take the stage to make the tournament’s first move. Make it yourself, right now.</span>
+      </p>
+
+      <div class="board-wrap">
+        <div class="board-frame">
+          <div class="board-grid">
+            <div class="files top" aria-hidden="true"></div>
+            <div class="ranks left" aria-hidden="true"></div>
+            <div class="board" id="board" role="img"
+                 aria-label="Шахматная доска в начальной позиции"></div>
+            <div class="ranks right" aria-hidden="true"></div>
+            <div class="files bottom" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="board-move">
+          <button type="button" id="move-btn">
+            <span data-l="ru">Сделать первый ход</span>
+            <span data-l="tj">Ҳаракати аввалро анҷом диҳед</span>
+            <span data-l="en">Make the first move</span>
+          </button>
+          <span class="notation" id="notation"></span>
+        </div>
+
+        <p class="board-credit">
+          <span data-l="ru">Доска из проекта </span>
+          <span data-l="tj">Тахта аз лоиҳаи </span>
+          <span data-l="en">Board from the </span><a href="https://shahmatnameh.tj" target="_blank" rel="noopener">Шоҳматнома · shahmatnameh.tj</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="wrap">
       <p class="line">
@@ -614,6 +754,67 @@ img{max-width:100%}
   }
 
   renderCountdown();
+
+  /* ---------- доска (из проекта Шоҳматнома) ---------- */
+  var FILES = ['a','b','c','d','e','f','g','h'];
+  var START = {
+    a8:'♜', b8:'♞', c8:'♝', d8:'♛', e8:'♚', f8:'♝', g8:'♞', h8:'♜',
+    a7:'♟', b7:'♟', c7:'♟', d7:'♟', e7:'♟', f7:'♟', g7:'♟', h7:'♟',
+    a2:'♙', b2:'♙', c2:'♙', d2:'♙', e2:'♙', f2:'♙', g2:'♙', h2:'♙',
+    a1:'♖', b1:'♘', c1:'♗', d1:'♕', e1:'♔', f1:'♗', g1:'♘', h1:'♖'
+  };
+  var BLACK = '♜♞♝♛♚♟';
+
+  var board = document.getElementById('board');
+  if (board) {
+    // координаты с двух сторон, как на доске Шоҳматнома
+    var filesRow = FILES.map(function(f){ return '<span>' + f + '</span>'; }).join('');
+    document.querySelectorAll('.files').forEach(function(el){ el.innerHTML = filesRow; });
+    var ranksCol = '';
+    for (var r = 8; r >= 1; r--) ranksCol += '<span>' + r + '</span>';
+    document.querySelectorAll('.ranks').forEach(function(el){ el.innerHTML = ranksCol; });
+
+    for (var rank = 8; rank >= 1; rank--) {
+      for (var i = 0; i < 8; i++) {
+        var name = FILES[i] + rank;
+        var sq = document.createElement('div');
+        sq.className = 'sq ' + ((i + rank) % 2 === 0 ? 'dark' : 'light');
+        sq.id = 'sq-' + name;
+        if (START[name]) {
+          var p = document.createElement('span');
+          p.className = 'piece ' + (BLACK.indexOf(START[name]) >= 0 ? 'pc-b' : 'pc-w');
+          p.textContent = START[name];
+          sq.appendChild(p);
+        }
+        board.appendChild(sq);
+      }
+    }
+
+    var btn = document.getElementById('move-btn');
+    var note = document.getElementById('notation');
+    var from = document.getElementById('sq-e2');
+    var to = document.getElementById('sq-e4');
+
+    if (btn && from && to) {
+      btn.addEventListener('click', function(){
+        var pawn = from.querySelector('.piece');
+        if (!pawn) return;
+        btn.disabled = true;
+        from.classList.add('hint');
+        to.classList.add('hint');
+        // сдвигаем на две клетки вниз по экрану (e2 → e4), затем переносим в целевое поле
+        var dy = from.getBoundingClientRect().top - to.getBoundingClientRect().top;
+        pawn.style.transform = 'translateY(' + (-dy) + 'px)';
+        if (note) note.textContent = '1. e2 — e4';
+        setTimeout(function(){
+          pawn.style.transition = 'none';
+          pawn.style.transform = '';
+          to.appendChild(pawn);
+          requestAnimationFrame(function(){ pawn.style.transition = ''; });
+        }, 880);
+      });
+    }
+  }
 })();
 </script>
 </body>
