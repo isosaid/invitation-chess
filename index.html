@@ -47,6 +47,97 @@ body{
   padding-right:max(20px,env(safe-area-inset-right,0px));
 }
 
+/* ---------- конверт при входе ---------- */
+.envelope{
+  position:fixed;inset:0;z-index:60;display:grid;place-items:center;
+  background:var(--ground);
+  padding:max(20px,env(safe-area-inset-left,0px));
+  transition:opacity .7s ease .55s, visibility .7s ease .55s;
+}
+.envelope.gone{opacity:0;visibility:hidden}
+.env-stage{position:relative;width:min(330px,82vw);aspect-ratio:1/1.34;perspective:1400px}
+
+/* карточка, выезжающая из конверта */
+.env-card{
+  position:absolute;left:6%;right:6%;top:7%;bottom:9%;z-index:4;
+  background:#fffef5;border:1px solid rgba(37,19,57,.18);
+  box-shadow:0 10px 26px rgba(37,19,57,.16);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  padding:22px 18px;text-align:center;
+  transform:translateY(0) scale(.97);opacity:0;
+  transition:transform 1.05s cubic-bezier(.22,.7,.26,1) .35s, opacity .4s ease .35s;
+}
+.env-card::before{
+  content:"";position:absolute;inset:9px;border:1px solid rgba(37,19,57,.22);pointer-events:none;
+}
+.envelope.open .env-card{transform:translateY(-40%) scale(1);opacity:1}
+.env-card .crown{width:54px;height:auto}
+.env-card .ttl{
+  font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.2;margin:0;
+}
+.env-card .sub{
+  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ivory-dim);margin:0;line-height:1.7;
+}
+
+/* корпус конверта */
+.env-body{position:absolute;inset:0;background:#faf8ea;
+  box-shadow:0 20px 50px rgba(37,19,57,.26);overflow:hidden;
+  border:1px solid rgba(37,19,57,.14)}
+.env-body::after{
+  content:"";position:absolute;inset:0;
+  background:url("logos/ornament-dark.png") no-repeat center 60% / 86% auto;opacity:.2;
+}
+/* боковые и нижняя створки — треугольниками, как у настоящего конверта */
+.env-left,.env-right{position:absolute;z-index:3}
+.env-bottom{position:absolute;z-index:5}
+.env-left{left:0;top:0;bottom:0;width:52%;
+  background:linear-gradient(100deg,#eae6cd 0%,#f2efdb 100%);
+  clip-path:polygon(0 0,100% 50%,0 100%)}
+.env-right{right:0;top:0;bottom:0;width:52%;
+  background:linear-gradient(260deg,#eae6cd 0%,#f2efdb 100%);
+  clip-path:polygon(100% 0,0 50%,100% 100%)}
+.env-bottom{left:0;right:0;bottom:0;height:62%;
+  background:linear-gradient(180deg,#f6f3df 0%,#efecd6 100%);
+  clip-path:polygon(0 100%,50% 0,100% 100%);
+  filter:drop-shadow(0 -2px 6px rgba(37,19,57,.12))}
+
+/* верхняя створка — открывается */
+.env-flap{
+  position:absolute;left:0;right:0;top:0;height:52%;z-index:6;
+  background:linear-gradient(180deg,#f2efda 0%,#e5e1c6 100%);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  filter:drop-shadow(0 3px 5px rgba(37,19,57,.14));
+  transform-origin:top center;transform:rotateX(0deg);
+  transition:transform .95s cubic-bezier(.5,.05,.25,1);
+  backface-visibility:hidden;
+}
+.envelope.open .env-flap{transform:rotateX(-172deg)}
+
+/* печать */
+.env-seal{
+  position:absolute;left:50%;top:48%;z-index:7;width:84px;height:84px;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle at 34% 30%, #3d2152 0%, #251339 62%, #1a0d2a 100%);
+  box-shadow:0 6px 16px rgba(37,19,57,.4), inset 0 0 0 3px rgba(253,254,240,.22);
+  display:grid;place-items:center;color:#fdfef0;font-size:38px;line-height:1;z-index:7;
+  transition:transform .5s ease, opacity .5s ease;
+}
+.envelope.open .env-seal{transform:translate(-50%,-50%) scale(.3);opacity:0}
+
+.env-hint{
+  position:absolute;left:0;right:0;bottom:-46px;text-align:center;
+  font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ivory-dim);
+  transition:opacity .4s ease;
+}
+.envelope.open .env-hint{opacity:0;animation:none}
+@media (prefers-reduced-motion:no-preference){
+  .env-hint{animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+}
+body.sealed{overflow:hidden}
+
 /* ---------- шапка ---------- */
 .topbar{
   position:sticky;
@@ -402,6 +493,40 @@ img{max-width:100%}
 <body>
 
 <div id="page" data-lang="ru">
+
+<div class="envelope" id="envelope" role="button" tabindex="0"
+     aria-label="Открыть приглашение">
+  <div class="env-stage">
+    <div class="env-body"></div>
+
+    <div class="env-card">
+      <img class="crown" src="logos/president-cup.png" alt="" width="288" height="360">
+      <p class="ttl">
+        <span data-l="ru">Приглашение</span>
+        <span data-l="tj">Даъватнома</span>
+        <span data-l="en">Invitation</span>
+      </p>
+      <p class="sub">
+        <span data-l="ru">10 ноября 2026 · Душанбе</span>
+        <span data-l="tj">10 ноябри 2026 · Душанбе</span>
+        <span data-l="en">10 November 2026 · Dushanbe</span>
+      </p>
+    </div>
+
+    <div class="env-bottom"></div>
+    <div class="env-left"></div>
+    <div class="env-right"></div>
+    <div class="env-flap"></div>
+    <div class="env-seal" aria-hidden="true">♞</div>
+
+    <p class="env-hint">
+      <span data-l="ru">Нажмите, чтобы открыть</span>
+      <span data-l="tj">Барои кушодан пахш кунед</span>
+      <span data-l="en">Tap to open</span>
+    </p>
+  </div>
+</div>
+
 
   <header class="topbar">
     <div class="wrap">
@@ -2528,6 +2653,7 @@ if (typeof define !== 'undefined')
     document.documentElement.setAttribute('lang', code === 'tj' ? 'tg' : code);
     try { localStorage.setItem(LS_KEY, code); } catch (e) {}
     renderCountdown();
+
     renderStatus();
   }
 
@@ -2570,6 +2696,31 @@ if (typeof define !== 'undefined')
   }
 
   renderCountdown();
+
+  /* ---------- конверт ---------- */
+  var envelope = document.getElementById('envelope');
+  if (envelope) {
+    document.body.classList.add('sealed');
+    var opened = false;
+    function openEnvelope(){
+      if (opened) return;
+      opened = true;
+      envelope.classList.add('open');
+      setTimeout(function(){
+        envelope.classList.add('gone');
+        document.body.classList.remove('sealed');
+      }, 1500);
+      setTimeout(function(){ envelope.remove(); }, 2600);
+    }
+    envelope.addEventListener('click', openEnvelope);
+    envelope.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnvelope(); }
+    });
+    // если гость просто смотрит — конверт раскроется сам
+    setTimeout(openEnvelope, 4200);
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduce && reduce.matches) openEnvelope();
+  }
 
   /* ---------- доска и партия (движок и оформление из проекта Шоҳматнома) ---------- */
   var FILES = ['a','b','c','d','e','f','g','h'];
