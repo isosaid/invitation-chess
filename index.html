@@ -259,24 +259,26 @@ body::before{
 
 /* ---------- герой в духе торжественного приглашения ---------- */
 .rule-top{
-  display:flex;align-items:center;justify-content:center;gap:16px;
-  font-family:var(--serif);font-size:clamp(19px,4.4vw,26px);letter-spacing:.14em;
-  text-transform:uppercase;color:var(--brass);margin:0 0 6px;font-weight:400;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  font-size:clamp(11.5px,2.9vw,14px);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ivory-dim);margin:22px 0 30px;font-weight:600;
 }
 .rule-top::before,.rule-top::after{
   content:"";height:1px;width:clamp(26px,9vw,64px);background:var(--brass-soft);
 }
 h1{
-  font-family:var(--serif);font-weight:500;
-  font-size:clamp(34px,9vw,62px);line-height:1.02;letter-spacing:.03em;
-  margin:0 0 22px;text-wrap:balance;color:var(--brass);text-transform:uppercase;
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(28px,7.4vw,50px);line-height:1.08;letter-spacing:.012em;
+  margin:14px 0 0;text-wrap:balance;color:var(--brass);
+  text-shadow:0 2px 18px rgba(240,227,168,.18);
 }
 .ribbon{
-  position:relative;margin:0 0 30px;padding:11px 18px;
+  position:relative;margin:0;padding:10px 18px;
+  letter-spacing:.04em;text-transform:uppercase;
   background:linear-gradient(90deg,
     rgba(240,227,168,0) 0%, rgba(240,227,168,.92) 12%,
     rgba(240,227,168,.92) 88%, rgba(240,227,168,0) 100%);
-  color:#0a1c3c;font-size:clamp(13px,3.1vw,16px);line-height:1.4;font-weight:500;
+  color:#0a1c3c;font-size:clamp(12px,2.9vw,15px);line-height:1.4;font-weight:700;
 }
 .two{
   display:grid;grid-template-columns:1fr 1px 1fr;gap:0 clamp(14px,5vw,34px);
@@ -590,8 +592,8 @@ footer .line{
   .hero .wrap>*{animation:rise .7s cubic-bezier(.2,.7,.3,1) backwards}
   .hero .plaque{animation-delay:.05s}
   .hero h1{animation-delay:.12s}
-  .hero .rule-top{animation-delay:.19s}
-  .hero .ribbon{animation-delay:.26s}
+  .hero .ribbon{animation-delay:.19s}
+  .hero h1{animation-delay:.26s}
   @keyframes rise{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}
 }
 </style>
@@ -670,25 +672,25 @@ img{max-width:100%}
       </p>
 
       <div class="plaque">
-        <img src="logos/president-cup.png" alt="Tajikistan President Cup" width="288" height="360">
+        <img src="logos/president-cup-white.png" alt="Tajikistan President Cup" width="352" height="440">
       </div>
 
-      <p class="rule-top">
-        <span data-l="ru">Торжественную</span>
-        <span data-l="tj">Маросими бошукӯҳи</span>
-        <span data-l="en">Official</span>
+      <p class="ribbon">
+        <span data-l="ru">Международный шахматный турнир</span>
+        <span data-l="tj">Мусобиқаи байналмилалӣ оид ба шоҳмот</span>
+        <span data-l="en">International Chess Tournament</span>
       </p>
 
       <h1>
-        <span data-l="ru">Церемонию<br>открытия</span>
-        <span data-l="tj">Ифтитоҳи<br>мусобиқа</span>
-        <span data-l="en">Opening<br>ceremony</span>
+        <span data-l="ru">«2-ой Кубок Президента Республики Таджикистан»</span>
+        <span data-l="tj">«Дуюмин Ҷоми Президенти Ҷумҳурии Тоҷикистон»</span>
+        <span data-l="en">«2nd President’s Cup of the Republic of Tajikistan»</span>
       </h1>
 
-      <p class="ribbon">
-        <span data-l="ru">Международный шахматный турнир «2-ой Кубок Президента Республики Таджикистан»</span>
-        <span data-l="tj">Мусобиқаи байналмилалӣ оид ба шоҳмот «Дуюмин Ҷоми Президенти Ҷумҳурии Тоҷикистон»</span>
-        <span data-l="en">International Chess Tournament «2nd President’s Cup of the Republic of Tajikistan»</span>
+      <p class="rule-top">
+        <span data-l="ru">Торжественная церемония открытия</span>
+        <span data-l="tj">Маросими тантанавии ифтитоҳ</span>
+        <span data-l="en">Grand opening ceremony</span>
       </p>
 
       <div class="two">
