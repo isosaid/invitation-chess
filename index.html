@@ -528,7 +528,7 @@ section .wrap{padding-block:46px}
   color:var(--ivory-dim);min-width:7ch;
 }
 .board-credit{
-  margin:12px 0 0;display:flex;flex-direction:column;align-items:center;gap:10px;
+  margin:0 auto 30px;display:flex;flex-direction:column;align-items:center;gap:10px;
   padding:24px 22px 22px;border:1px solid var(--line);border-radius:3px;
   background:linear-gradient(180deg, rgba(240,227,168,.07), rgba(240,227,168,.02));
   position:relative;max-width:min(430px,100%);
@@ -928,11 +928,23 @@ img{max-width:100%}
         <span data-l="tj">Бозӣ аз ин ҷо оғоз меёбад</span>
         <span data-l="en">The game begins here</span>
       </h2>
-      <p class="lead">
-        <span data-l="ru">В 15:15 почётные гости поднимутся на сцену и сделают первый ход турнира. Сыграйте и Вы: нажмите фигуру, затем поле.</span>
-        <span data-l="tj">Соати 15:15 меҳмонони олиқадр ба саҳна мебароянд ва ҳаракати аввали мусобиқаро анҷом медиҳанд. Шумо низ бозӣ карда метавонед: фигураро пахш кунед, баъд хонаро.</span>
-        <span data-l="en">At 15:15 the distinguished guests take the stage to make the tournament’s first move. Play a game yourself: tap a piece, then a square.</span>
-      </p>
+      <div class="board-credit">
+          <p class="k">
+            <span data-l="ru">Шахматная платформа турнира</span>
+            <span data-l="tj">Платформаи шоҳмотии мусобиқа</span>
+            <span data-l="en">Chess platform of the tournament</span>
+          </p>
+          <a class="site" href="https://shahmatnameh.tj" target="_blank" rel="noopener">
+            <span class="glyph" aria-hidden="true">&#9816;</span>
+            <span class="name">shahmatnameh.tj</span>
+          </a>
+          <p class="sub">
+            <span data-l="ru">Уроки, задачи и партии онлайн</span>
+            <span data-l="tj">Дарсҳо, масъалаҳо ва бозиҳо онлайн</span>
+            <span data-l="en">Lessons, puzzles and games online</span>
+          </p>
+        </div>
+
 
       <div class="board-wrap">
         <div class="board-frame">
@@ -986,22 +998,7 @@ img{max-width:100%}
 
         <p class="board-moves" id="board-moves"></p>
 
-        <div class="board-credit">
-          <p class="k">
-            <span data-l="ru">Шахматная платформа турнира</span>
-            <span data-l="tj">Платформаи шоҳмотии мусобиқа</span>
-            <span data-l="en">Chess platform of the tournament</span>
-          </p>
-          <a class="site" href="https://shahmatnameh.tj" target="_blank" rel="noopener">
-            <span class="glyph" aria-hidden="true">&#9816;</span>
-            <span class="name">shahmatnameh.tj</span>
-          </a>
-          <p class="sub">
-            <span data-l="ru">Уроки, задачи и партии онлайн</span>
-            <span data-l="tj">Дарсҳо, масъалаҳо ва бозиҳо онлайн</span>
-            <span data-l="en">Lessons, puzzles and games online</span>
-          </p>
-        </div>
+        
       </div>
     </div>
   </section>
