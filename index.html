@@ -46,6 +46,7 @@
   }
   body{background:var(--ground);color:var(--ivory)}
 }
+html{scroll-behavior:smooth}
 *{box-sizing:border-box}
 body{
   background:
@@ -311,6 +312,29 @@ h1{
 }
 .hall{margin:0;font-size:14px;color:var(--ivory-dim)}
 
+/* ---------- кнопки перехода ---------- */
+.cta{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:12px;
+  margin:26px 0 22px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 22px;border-radius:4px;text-decoration:none;
+  font-size:15px;font-weight:600;letter-spacing:.01em;
+  border:1px solid transparent;transition:background .2s,color .2s,border-color .2s,transform .15s;
+}
+.btn .arr{font-size:16px;line-height:1}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.btn-gold{background:var(--brass);color:#0a1c3c;box-shadow:0 6px 18px rgba(240,227,168,.18)}
+.btn-gold:hover{background:#fff1bd}
+.btn-line{border-color:var(--line);color:var(--ivory);background:rgba(240,227,168,.06)}
+.btn-line:hover{border-color:var(--brass);color:var(--brass)}
+@media (max-width:420px){
+  .cta{flex-direction:column;align-items:stretch}
+  .btn{justify-content:center}
+}
+
 /* ---------- письмо ---------- */
 section{position:relative;border-bottom:1px solid rgba(240,227,168,.2)}
 section::after{
@@ -396,7 +420,7 @@ section .wrap{padding-block:46px}
 .move.key .ev{color:var(--brass)}
 
 /* ---------- доска (из проекта Шоҳматнома / shahmatnameh.tj) ---------- */
-.board-sec .wrap{padding-block:52px;text-align:center}
+.board-sec .wrap{padding-block:52px;scroll-margin-top:72px;text-align:center}
 .board-sec .kicker{
   font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
   color:var(--brass);margin:0 0 12px;
@@ -728,6 +752,21 @@ img{max-width:100%}
         <span data-l="en">Istiqlol Hall</span>
       </p>
 
+      <div class="cta">
+        <a class="btn btn-gold" href="#play">
+          <span data-l="ru">Играть в шахматы</span>
+          <span data-l="tj">Шоҳмот бозӣ кардан</span>
+          <span data-l="en">Play chess</span>
+          <span class="arr" aria-hidden="true">&#8594;</span>
+        </a>
+        <a class="btn btn-line" href="#programme">
+          <span data-l="ru">Программа мероприятия</span>
+          <span data-l="tj">Барномаи чорабинӣ</span>
+          <span data-l="en">Event programme</span>
+          <span class="arr" aria-hidden="true">&#8595;</span>
+        </a>
+      </div>
+
       <p class="countdown" id="countdown" data-static="true">
         <span data-l="ru">10 ноября 2026 года, Душанбе</span>
         <span data-l="tj">10 ноябри соли 2026, Душанбе</span>
@@ -789,7 +828,7 @@ img{max-width:100%}
     </div>
   </section>
 
-  <section>
+  <section id="programme">
     <div class="wrap">
       <div class="prog-head">
         <p class="kicker">
@@ -877,7 +916,7 @@ img{max-width:100%}
     </div>
   </section>
 
-  <section class="board-sec">
+  <section class="board-sec" id="play">
     <div class="wrap">
       <p class="kicker">
         <span data-l="ru">Символический первый ход</span>
