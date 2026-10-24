@@ -502,10 +502,33 @@ section .wrap{padding-block:46px}
   color:var(--ivory-dim);min-width:7ch;
 }
 .board-credit{
-  margin:0;font-size:14px;color:var(--ivory-dim);
+  margin:12px 0 0;display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:24px 22px 22px;border:1px solid var(--line);border-radius:3px;
+  background:linear-gradient(180deg, rgba(240,227,168,.07), rgba(240,227,168,.02));
+  position:relative;max-width:min(430px,100%);
 }
-.board-credit a{color:var(--brass);text-decoration:none;border-bottom:1px solid var(--line)}
-.board-credit a:hover{border-bottom-color:var(--brass)}
+/* золотая насечка сверху, как на ленте в шапке */
+.board-credit::before{
+  content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  width:84px;height:2px;background:var(--brass);
+}
+.board-credit .k{
+  margin:0;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ivory-dim);
+}
+.board-credit .site{
+  display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+  color:var(--brass);transition:color .2s,transform .2s;
+}
+.board-credit .site .glyph{font-size:28px;line-height:1;opacity:.85}
+.board-credit .site .name{
+  font-family:var(--serif);font-size:clamp(23px,6vw,31px);font-weight:600;
+  letter-spacing:.02em;border-bottom:1px solid rgba(240,227,168,.45);padding-bottom:3px;
+}
+.board-credit .site:hover{color:#fff4c9}
+.board-credit .site:hover .name{border-bottom-color:#fff4c9}
+.board-credit .site:focus-visible{outline:2px solid var(--brass);outline-offset:4px}
+.board-credit .sub{margin:0;font-size:14.5px;color:var(--ivory-dim)}
 
 /* ---------- подвал ---------- */
 footer{position:relative;overflow:hidden}
@@ -986,11 +1009,22 @@ img{max-width:100%}
 
         <p class="board-moves" id="board-moves"></p>
 
-        <p class="board-credit">
-          <span data-l="ru">Шахматная платформа турнира · </span>
-          <span data-l="tj">Платформаи шоҳмотии мусобиқа · </span>
-          <span data-l="en">Chess platform of the tournament · </span><a href="https://shahmatnameh.tj" target="_blank" rel="noopener">shahmatnameh.tj</a>
-        </p>
+        <div class="board-credit">
+          <p class="k">
+            <span data-l="ru">Шахматная платформа турнира</span>
+            <span data-l="tj">Платформаи шоҳмотии мусобиқа</span>
+            <span data-l="en">Chess platform of the tournament</span>
+          </p>
+          <a class="site" href="https://shahmatnameh.tj" target="_blank" rel="noopener">
+            <span class="glyph" aria-hidden="true">&#9816;</span>
+            <span class="name">shahmatnameh.tj</span>
+          </a>
+          <p class="sub">
+            <span data-l="ru">Уроки, задачи и партии онлайн</span>
+            <span data-l="tj">Дарсҳо, масъалаҳо ва бозиҳо онлайн</span>
+            <span data-l="en">Lessons, puzzles and games online</span>
+          </p>
+        </div>
       </div>
     </div>
   </section>
